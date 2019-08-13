@@ -42,10 +42,8 @@ static void		val_cmd(char *s, char **map,  int *start, int *end)
 	{
 		if (*start)
 			lemerror();
-		if (get_next_line(0, &next) && space_jam(s) == 2)
-			val_room(next, map, 1);
-		else
-			lemerror();	
+		get_next_line(0, &next);
+		space_jam(next) == 2 ? val_room(next, map, 1) : lemerror();	
 		//set room to start room
 		*start = 1;
 		//free(next);
@@ -54,10 +52,8 @@ static void		val_cmd(char *s, char **map,  int *start, int *end)
 	{
 		if (*end)
 			lemerror();
-		if (get_next_line(0, &next) && space_jam(s) == 2)
-			val_room(next, map, 2);
-		else
-			lemerror();	
+		get_next_line(0, &next);
+		space_jam(next) == 2 ? val_room(next, map, 2) : lemerror();
 		//set room to end
 		*end = 1;
 		//free(next);
@@ -110,8 +106,8 @@ void			validate(char *s, char **map, int mode)
 int			populate_map(char **file, char **map)
 {
 	get_next_line(0, file);
-	free(*file);
 	validate(*file, map, 0);
+	free(*file);
 	while (get_next_line(0, file))
 	{
 		validate(*file, map, 1);

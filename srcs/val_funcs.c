@@ -39,8 +39,6 @@ void	val_room(char *s, char **map, int type)
 	char	**info;
 	char	*pos[2];
 
-	if (!(*s))
-		lemerror();
 	info = ft_strsplit(s, ' ');
 	pos[0] = ft_itoa(ft_atoi(info[1]));
 	if (ft_strcmp(pos[0], info[1]) != 0)
