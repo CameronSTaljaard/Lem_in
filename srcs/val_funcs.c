@@ -20,7 +20,7 @@ int		map_count(void)
 	return (i);
 }
 
-void	val_ants(char *s, char **map)
+void	val_ants(char *s, char **map, t_room **room)
 {
 	char	*ants;
 
@@ -34,7 +34,7 @@ void	val_ants(char *s, char **map)
 	ft_strdel(&ants);
 }
 
-void	val_room(char *s, char **map, int type)
+t_room	*val_room(char *s, char **map, int type, t_room **room)
 {
 	char	**info;
 	char	*pos[2];
@@ -49,14 +49,15 @@ void	val_room(char *s, char **map, int type)
 	map[map_count()] = ft_strdup(s);
 	ft_strdel(&pos[0]);
 	ft_strdel(&pos[1]);
+	add_room(*room, info[0], ft_atoi(info[1]), ft_atoi(info[2]), type);
 	free(info[0]);
 	free(info[1]);
 	free(info[2]);
 	free(info);
-	//Create rooms
+	return (*room);
 }
 
-void	val_link(char *s, char **map)
+void	val_link(char *s, char **map, t_room **room)
 {
 	char	**pair;
 	int		n;

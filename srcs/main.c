@@ -68,10 +68,11 @@ int			main(void)
 {
 	char			*file;
 	char			*map[100000];
+	t_room			*rooms;
 
 	//intro();
 	file = NULL;
-	populate_map(&file, map);
+	populate_map(&file, map, &rooms);
 	disp_map(map);
 	//algorithm to print moves
 	return (0);

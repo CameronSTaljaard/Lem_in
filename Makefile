@@ -2,6 +2,7 @@ NAME			= lem_in
 CC				= gcc
 LIBFT_DIRECTORY = ./libft
 SRC_DIR 		= ./srcs/
+ROOMS_DIR		= $(SRC_DIR)rooms/
 LIBRARIES 		= -lft -Llibft
 LIBFT			= ./libft/*
 INCLUDES 		= -I./libft/includes -I./includes
@@ -16,7 +17,7 @@ WHITE			:="\033[1;37m"
 EOC				:="\033[0;0m"
 # ==================
 
-SRCS		= $(SRC_DIR)main.c $(SRC_DIR)val_funcs.c $(SRC_DIR)validate.c
+SRCS		= $(SRC_DIR)main.c $(SRC_DIR)val_funcs.c $(SRC_DIR)validate.c $(ROOMS_DIR)room_handler.c
 OBJS		= $(SRCS:.c=.o)
 
 all:		$(NAME)
