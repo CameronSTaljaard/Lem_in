@@ -30,20 +30,11 @@ typedef struct		s_co_ord
 	int				y;
 }					t_co_ord;
 
-/*
-**	list of room names linked to a single room.
-*/
-
 typedef struct		s_links
 {
 	char			*link;
 	struct s_links	*more;
 }					t_links;
-
-/*
-**	data for each room: name, position and links.
-**	type 0/1/2 for normal/start/end.
-*/
 
 typedef struct		s_room
 {
@@ -62,11 +53,18 @@ int					populate_map(char **file, char **map, t_room **room);
 //void				link_check(char **link);
 
 /*
+** Debug
+*/
+void				intro(void);
+void				disp_rooms(t_room *rooms);
+void				disp_map(char **map);
+
+
+/*
 ** Room handling
 */
-
 t_room				*new_room(char *name, int xpos, int ypos, int type);
-t_room				*add_room(t_room *room, char *name, int xpos, int ypos, int type);
+t_room				*add_room(t_room **room, char *name, int xpos, int ypos, int type);
 
 int					map_count(void);
 

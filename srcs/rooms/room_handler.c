@@ -14,22 +14,21 @@ t_room	*new_room(char *name, int xpos, int ypos, int type)
 	return (new);
 }
 
-t_room	*add_room(t_room *room, char *name, int xpos, int ypos, int type)
+t_room	*add_room(t_room **room, char *name, int xpos, int ypos, int type)
 {
 	t_room *tmp;
 
-	tmp = room;
-	if (!tmp)
+	tmp = *room;
+	if (!*room)
 	{
-		if (!(tmp = new_room(name, xpos, ypos, type)))
-			MAL_ERROR;
-		return (room);
+		*room = new_room(name, xpos, ypos, type);
+		return (*room);
 	}
 	while (tmp->next)
 	{
-		(name = tmp->name) ? (DUP_NAME) : NULL;
-		tmp = room->next;
+		//(name = tmp->name) ? (DUP_NAME) : NULL;
+		tmp = tmp->next;
 	}
-	room->next = new_room(name, xpos, ypos, type);
-	return (room);
+	tmp->next = new_room(name, xpos, ypos, type);
+	return (*room);
 }
