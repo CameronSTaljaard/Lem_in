@@ -42,17 +42,12 @@ void	val_room(char *s, char **map, int type)
 	if (!(*s))
 		lemerror();
 	info = ft_strsplit(s, ' ');
-	//CHECK IF NAME ALREADY EXISTS
-	//CHECK FOR CLASHING COORDS
 	pos[0] = ft_itoa(ft_atoi(info[1]));
 	if (ft_strcmp(pos[0], info[1]) != 0)
 		lemerror();
 	pos[1] = ft_itoa(ft_atoi(info[2]));
 	if (ft_strcmp(pos[1], info[2]) != 0)
 		lemerror();
-	//ASSIGN info[0/1/2] as room name, x coord, y coord respectively.
-	//room type as type
-	write(0, &type, 4);
 	map[map_count()] = ft_strdup(s);
 	ft_strdel(&pos[0]);
 	ft_strdel(&pos[1]);
@@ -60,6 +55,7 @@ void	val_room(char *s, char **map, int type)
 	free(info[1]);
 	free(info[2]);
 	free(info);
+	//Create rooms
 }
 
 void	val_link(char *s, char **map)

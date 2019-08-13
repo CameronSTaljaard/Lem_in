@@ -69,10 +69,9 @@ int			main(void)
 	char			*file;
 	char			*map[100000];
 
-	intro();
+	//intro();
 	file = NULL;
-	validate_input(&file, map);
-	(file) ? free(file) : NULL;
+	populate_map(&file, map);
 	disp_map(map);
 	//algorithm to print moves
 	return (0);

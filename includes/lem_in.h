@@ -17,6 +17,8 @@
 # include <libft.h>
 # include <get_next_line.h>
 
+# define MAL_ERROR {ft_putendl("Error : Failed to malloc."); exit(1);}
+
 /*
 **	x and y position of room for visualiser and checking overlapping rooms.
 */
@@ -48,13 +50,14 @@ typedef struct		s_room
 	t_co_ord		pos;
 	t_links			*links;
 	int				type;
+	struct s_room	*next;
 }					t_room;
 
 void				validate(char *s, char **map, int mode);
 void				val_ants(char *s, char **map);
 void				val_room(char *s, char **map, int type);
 void				val_link(char *s, char **map);
-int					validate_input(char **file, char **map);
+int					populate_map(char **file, char **map);
 //void				link_check(char **link);
 
 int					map_count(void);
