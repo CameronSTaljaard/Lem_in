@@ -57,13 +57,24 @@ void	disp_rooms(t_room *rooms)
 {
 	while (rooms)
 	{
-		ft_putstr("Room: ");
-		ft_putstr(rooms->name);
+		ft_putstr_col_fd(GREEN, "Room: ", 1);
+		ft_putendl_col_fd(GREEN, rooms->name, 1);
+
+		ft_putstr("Location: ");
+		ft_putnbr_col_fd(CYAN, rooms->pos.x, 1);
 		ft_putchar(' ');
-		ft_putstr("is at location: ");
-		ft_putnbr(rooms->pos.x);
+		ft_putnbr_col_fd(CYAN, rooms->pos.y, 1);
+		ft_putendl("");
+		ft_putstr("Links:");
 		ft_putchar(' ');
-		ft_putnbr(rooms->pos.y);
+		while (rooms->links)
+		{
+			ft_putstr_col_fd(CYAN, rooms->links->link, 1);
+			ft_putchar(' ');
+			rooms->links = rooms->links->next;
+			(rooms->links) ? (ft_putstr("and ")) : NULL;
+		}
+		ft_putendl("");
 		ft_putendl("");
 		rooms = rooms->next;
 	}

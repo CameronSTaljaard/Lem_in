@@ -18,7 +18,7 @@
 # include <get_next_line.h>
 
 # define MAL_ERROR {ft_putendl("Error : Failed to malloc."); exit(1);}
-# define DUP_NAME {ft_putendl("Error: Duplicate names."); exit(1);}
+# define DUP_NAME {ft_putendl("Error: Duplicate room names."); exit(1);}
 # define DUP_LINK {ft_putendl("Error: Duplicate links."); exit(1);}
 
 /*
@@ -66,6 +66,13 @@ void				disp_map(char **map);
 */
 t_room				*new_room(char *name, int xpos, int ypos, int type);
 t_room				*add_room(t_room **room, char *name, int xpos, int ypos, int type);
+t_links				*new_link(char *name);
+void				add_link(t_room **room, char *name1, char *name2);
+
+/*
+** Room Navigation
+*/
+t_room				*find_room(t_room *room, char *name);
 
 int					map_count(void);
 
@@ -74,5 +81,4 @@ int					map_count(void);
 //				set_link();
 
 void				lemerror(void);
-
 #endif

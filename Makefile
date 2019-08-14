@@ -18,7 +18,8 @@ WHITE			:="\033[1;37m"
 EOC				:="\033[0;0m"
 # ==================
 
-SRCS		= $(SRC_DIR)main.c $(SRC_DIR)val_funcs.c $(SRC_DIR)validate.c $(ROOMS_DIR)room_handler.c $(DEBUG_DIR)display.c
+SRCS		= $(SRC_DIR)main.c $(SRC_DIR)val_funcs.c $(SRC_DIR)validate.c $(DEBUG_DIR)display.c
+SRCS		+= $(ROOMS_DIR)room_handler.c  $(ROOMS_DIR)room_nav.c
 OBJS		= $(SRCS:.c=.o)
 
 all:		$(NAME)

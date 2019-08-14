@@ -49,7 +49,6 @@ t_room	*val_room(char *s, char **map, int type, t_room **room)
 	map[map_count()] = ft_strdup(s);
 	ft_strdel(&pos[0]);
 	ft_strdel(&pos[1]);
-	//(!*room) ? (*room = new_room(info[0], ft_atoi(info[1]), ft_atoi(info[2]), type)) : NULL;
 	add_room(room, info[0], ft_atoi(info[1]), ft_atoi(info[2]), type);
 	free(info[0]);
 	free(info[1]);
@@ -70,8 +69,8 @@ void	val_link(char *s, char **map, t_room **room)
 	if (n != 2)
 		lemerror();
 	//CHECK IF BOTH ROOMS EXIST
-	
-	//SET LINKS BETWEEN TWO ROOMS
+	add_link(room, pair[0], pair[1]);
+	add_link(room, pair[1], pair[0]);
 	map[map_count()] = ft_strdup(s);
 	free(pair[0]);
 	free(pair[1]);

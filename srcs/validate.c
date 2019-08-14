@@ -46,17 +46,16 @@ static void		val_cmd(char *s, char **map,  int *start, int *end, t_room **room)
 		space_jam(next) == 2 ? val_room(next, map, 1, room) : lemerror();	
 		//set room to start room
 		*start = 1;
-		//free(next);
+		free(next);
 	}
-	if (ft_strcmp(s, "##end") == 0)
+	if (ft_strequ(s, "##end"))
 	{
 		if (*end)
 			lemerror();
 		get_next_line(0, &next);
 		space_jam(next) == 2 ? val_room(next, map, 2, room) : lemerror();
-		//set room to end
 		*end = 1;
-		//free(next);
+		free(next);
 	}
 }
 
