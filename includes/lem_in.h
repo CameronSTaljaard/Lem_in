@@ -19,6 +19,7 @@
 
 # define MAL_ERROR {ft_putendl("Error : Failed to malloc."); exit(1);}
 # define DUP_NAME {ft_putendl("Error: Duplicate names."); exit(1);}
+# define DUP_LINK {ft_putendl("Error: Duplicate links."); exit(1);}
 
 /*
 **	x and y position of room for visualiser and checking overlapping rooms.
@@ -33,7 +34,7 @@ typedef struct		s_co_ord
 typedef struct		s_links
 {
 	char			*link;
-	struct s_links	*more;
+	struct s_links	*next;
 }					t_links;
 
 typedef struct		s_room

@@ -70,6 +70,7 @@ void	val_link(char *s, char **map, t_room **room)
 	if (n != 2)
 		lemerror();
 	//CHECK IF BOTH ROOMS EXIST
+	
 	//SET LINKS BETWEEN TWO ROOMS
 	map[map_count()] = ft_strdup(s);
 	free(pair[0]);
