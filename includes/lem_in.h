@@ -124,6 +124,5 @@ void				sort_paths(t_path **path, int size);
 */
 int					map_count(void);
 size_t				array_length(t_path **path);
-void				swap_rooms(t_room **room);
 
 #endif

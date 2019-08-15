@@ -54,13 +54,3 @@ void	free_rooms(t_room **room)
 	}
 	*room = NULL;
 }
-
-void	swap_rooms(t_room **room)
-{
-	t_room *next;
-
-	if (!(*room) || (*room)->next)
-		return ;
-	next = (*room)->next;
-	(*room) = next;
-}
