@@ -76,12 +76,16 @@ typedef struct		s_staend
 	int				end;
 }					t_staend;
 
+/*
+** Validation
+*/
 void				validate(char *s, char **map, int mode, t_room **room);
 void				val_ants(char *s, char **map, t_room **room);
 t_room				*val_room(char *s, char **map, int type, t_room **room);
 void				val_link(char *s, char **map, t_room **room);
 int					populate_map(char **file, char **map, t_room **room);
 void				link_check(char **link, t_room **room);
+int 				contains_dup(t_path *start);
 
 /*
 ** Debug
@@ -112,7 +116,13 @@ t_room				*find_room(t_room *room, char *name);
 void				path_bot(t_room *start, t_room *room, t_path *path, t_path **paths);
 t_path				*dup_path(t_path *path);
 size_t				path_length(t_path *path);
+void				sort_paths(t_path **path, int size);
 
+
+/*
+** Misc
+*/
 int					map_count(void);
+size_t				array_length(t_path **path);
 
 #endif
