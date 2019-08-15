@@ -12,8 +12,8 @@ End 10 32
 #ROOM LINKS
 Bathroom-Bedroom
 Hallway-Start
+Hallway-End
 Hallway-Theatre
 Hallway-Passage
 Hallway-Bedroom
-Hallway-End
 ##invalid commands are ignored

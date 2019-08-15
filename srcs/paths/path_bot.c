@@ -54,9 +54,7 @@ t_path	*path_bot(t_room *start, t_room *room, t_path *path)
 	// Free path later.
 	if (contains_dup(tmp))
 		return (NULL);
-
 	//print_path(path);
-
 	if (room->type == 2)
 	{
 		ft_putendl("Found end");
@@ -66,7 +64,6 @@ t_path	*path_bot(t_room *start, t_room *room, t_path *path)
 
 	while (room->links)
 	{
-		//ft_putstr(room->name); ft_putstr("->"); ft_putendl(room->links->link);
 		if (!(link_contains(path, room->links->link)))
 			path_bot(start, find_room(start, room->links->link), tmp);
 		room->links = room->links->next;
