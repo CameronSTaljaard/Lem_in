@@ -6,7 +6,7 @@
 /*   By: bmarks <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 10:51:39 by bmarks            #+#    #+#             */
-/*   Updated: 2019/08/15 13:09:50 by bmarks           ###   ########.fr       */
+/*   Updated: 2019/08/15 15:01:15 by bmarks           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,16 @@
 # include <stdio.h>
 # include <libft.h>
 # include <get_next_line.h>
+
+# define POOR_FORM {ft_putendl("Error : Map input poorly formatted."); exit(1);}
+# define MULTI_START {ft_putendl("Error : One start room allowed."); exit(1);}
+# define MULTI_END {ft_putendl("Error : One end room allowed."); exit(1);}
+# define NO_START {ft_putendl("Error : Start room required."); exit(1);}
+# define NO_END {ft_putendl("Error : End room required."); exit(1);}
+# define NO_ANTS {ft_putendl("Error : No value for ants."); exit(1);}
+# define BAD_ANTS {ft_putendl("Error: Ants must be an integer >= 0."); exit(1);}
+# define BAD_X {ft_putendl("Error : Invalid value for x-coordinate."); exit(1);}
+# define BAD_Y {ft_putendl("Error : Invalid value for y-coordinate."); exit(1);}
 
 # define MAL_ERROR {ft_putendl("Error : Failed to malloc."); exit(1);}
 # define DUP_NAME {ft_putendl("Error: Duplicate room names."); exit(1);}
@@ -48,6 +58,12 @@ typedef struct		s_room
 	struct s_room	*next;
 }					t_room;
 
+typedef struct		s_staend
+{
+	int				start;
+	int				end;
+}					t_staend;
+
 void				validate(char *s, char **map, int mode, t_room **room);
 void				val_ants(char *s, char **map, t_room **room);
 t_room				*val_room(char *s, char **map, int type, t_room **room);
@@ -79,8 +95,5 @@ t_room				*find_room(t_room *room, char *name);
 int					map_count(void);
 
 //				set_ants();
-//				create_room();
-//				set_link();
 
-void				lemerror(void);
 #endif

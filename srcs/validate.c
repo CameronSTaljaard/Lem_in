@@ -6,19 +6,13 @@
 /*   By: bmarks <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 13:40:52 by bmarks            #+#    #+#             */
-/*   Updated: 2019/08/02 12:17:02 by bmarks           ###   ########.fr       */
+/*   Updated: 2019/08/15 15:01:13 by bmarks           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-void			lemerror(void)
-{
-	ft_putendl_fd("\033[0;31mERROR", 2);
-	exit(-1);
-}
-
-static int		space_jam(char *s)
+static int		char_jam(char *s, char brk)
 {
 	int	n;
 	int	i;
@@ -27,43 +21,42 @@ static int		space_jam(char *s)
 	n = 0;
 	while (*(s + i) != '\0')
 	{
-		if (*(s + i) == ' ')
+		if (*(s + i) == brk)
 			n++;
 		i++;
 	}
 	return (n);
 }
 
-static void		val_cmd(char *s, char **map,  int *start, int *end, t_room **room)
+static void		val_cmd(char *s, char **map, t_staend *se, t_room **room)
 {
 	char	*next;
 
 	if (ft_strcmp(s, "##start") == 0)
 	{
-		if (*start)
-			lemerror();
+		if (se->start == 1)
+			MULTI_START;
 		get_next_line(0, &next);
-		space_jam(next) == 2 ? val_room(next, map, 1, room) : lemerror();	
-		//set room to start room
-		*start = 1;
+		char_jam(next, ' ') == 2 ? val_room(next, map, 1, room) : (POOR_FORM);
+		se->start = 1;
 		free(next);
 	}
 	if (ft_strequ(s, "##end"))
 	{
-		if (*end)
-			lemerror();
+		if (se->end == 1)
+			MULTI_END;
 		get_next_line(0, &next);
-		space_jam(next) == 2 ? val_room(next, map, 2, room) : lemerror();
-		*end = 1;
+		char_jam(next, ' ') == 2 ? val_room(next, map, 2, room) : (POOR_FORM);
+		se->end = 1;
 		free(next);
 	}
 }
 
 static void		val_m1(char *s, int *roomy, char **map, t_room **room)
 {
-	if (space_jam(s) == 2 && *roomy == 0)
-			val_room(s, map, 0, room);
-	else if (space_jam(s) == 0)
+	if (char_jam(s, ' ') == 2 && *roomy == 0)
+		val_room(s, map, 0, room);
+	else if (char_jam(s, ' ') == 0 && char_jam(s, '-'))
 	{
 		if (*roomy == 0)
 			validate(NULL, NULL, 0, room);
@@ -71,21 +64,20 @@ static void		val_m1(char *s, int *roomy, char **map, t_room **room)
 		val_link(s, map, room);
 	}
 	else
-		lemerror();
+		POOR_FORM;
 }
 
 void			validate(char *s, char **map, int mode, t_room **room)
 {
-	static int	start;
-	static int	end;
-	static int	roomy;
+	static t_staend		se;
+	static int			roomy;
 
 	if (s == NULL)
 	{
-		if (!start)
-			lemerror();
-		if (!end)
-			lemerror();
+		if (!se.start)
+			NO_START;
+		if (!se.end)
+			NO_END;
 		//NEED TO CHECK THAT START AND END CONNECTED
 	}
 	else if (mode == 0)
@@ -94,15 +86,17 @@ void			validate(char *s, char **map, int mode, t_room **room)
 	{
 		map[map_count()] = ft_strdup(s);
 		if (ft_strncmp("#", s + 1, 1) == 0)
-			val_cmd(s, map, &start, &end, room);
+			val_cmd(s, map, &se, room);
 	}
 	else if (ft_strncmp("L", s, 1) == 0)
-		lemerror();
+	{
+		POOR_FORM;
+	}
 	else if (mode == 1)
 		val_m1(s, &roomy, map, room);
 }
 
-int			populate_map(char **file, char **map, t_room **room)
+int				populate_map(char **file, char **map, t_room **room)
 {
 	get_next_line(0, file);
 	free(*file);
