@@ -53,6 +53,15 @@ void	disp_map(char **map)
 	printf("\n\n");
 }
 
+void	disp_links(t_links *link)
+{
+	ft_putstr_col_fd(CYAN, link->link, 1);
+	ft_putchar(' ');
+	(link->next) ? (ft_putstr("and ")) : NULL;
+	if (link->next)
+		disp_links(link->next);
+}
+
 void	disp_rooms(t_room *rooms)
 {
 	while (rooms)
@@ -67,13 +76,8 @@ void	disp_rooms(t_room *rooms)
 		ft_putendl("");
 		ft_putstr("Links:");
 		ft_putchar(' ');
-		while (rooms->links)
-		{
-			ft_putstr_col_fd(CYAN, rooms->links->link, 1);
-			ft_putchar(' ');
-			rooms->links = rooms->links->next;
-			(rooms->links) ? (ft_putstr("and ")) : NULL;
-		}
+		disp_links(rooms->links);
+
 		ft_putendl("");
 		ft_putendl("");
 		rooms = rooms->next;

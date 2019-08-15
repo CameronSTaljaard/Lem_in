@@ -4,6 +4,7 @@ LIBFT_DIRECTORY = ./libft
 SRC_DIR 		= ./srcs/
 ROOMS_DIR		= $(SRC_DIR)rooms/
 DEBUG_DIR		= $(SRC_DIR)debug/
+PATHS_DIR		= $(SRC_DIR)paths/
 LIBRARIES 		= -lft -Llibft
 LIBFT			= ./libft/*
 INCLUDES 		= -I./libft/includes -I./includes
@@ -20,6 +21,7 @@ EOC				:="\033[0;0m"
 
 SRCS		= $(SRC_DIR)main.c $(SRC_DIR)val_funcs.c $(SRC_DIR)validate.c $(DEBUG_DIR)display.c
 SRCS		+= $(ROOMS_DIR)room_handler.c  $(ROOMS_DIR)room_nav.c
+SRCS		+= $(PATHS_DIR)path_bot.c $(PATHS_DIR)path_handler.c
 OBJS		= $(SRCS:.c=.o)
 
 all:		$(NAME)

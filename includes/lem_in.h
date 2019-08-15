@@ -37,6 +37,13 @@
 **	x and y position of room for visualiser and checking overlapping rooms.
 */
 
+typedef struct		s_path
+{
+	char			*room_name;
+	struct s_path	*next_room;
+}					t_path;
+
+
 typedef struct		s_co_ord
 {
 	int				x;
@@ -55,6 +62,7 @@ typedef struct		s_room
 	t_co_ord		pos;
 	t_links			*links;
 	int				type;
+	int				ant_count;
 	struct s_room	*next;
 }					t_room;
 
@@ -91,9 +99,10 @@ void				add_link(t_room **room, char *name1, char *name2);
 ** Room Navigation
 */
 t_room				*find_room(t_room *room, char *name);
+t_path				*new_path(char *room_name);
+t_path				*add_path(t_path **path, char *room_name);
+t_path				*path_bot(t_room *start, t_room *room, t_path *path);
 
 int					map_count(void);
-
-//				set_ants();
 
 #endif

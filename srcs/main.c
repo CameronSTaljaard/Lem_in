@@ -17,18 +17,17 @@ int			main(void)
 	char			*file;
 	char			*map[100000];
 	t_room			*rooms;
+	t_path			*path;
 
+	path = NULL;
 	//intro();
 	file = NULL;
 	populate_map(&file, map, &rooms);
 	//disp_map(map);
-	disp_rooms(rooms);
-
+	//disp_rooms(rooms);
+	rooms->ant_count = ft_atoi(map[0]);
 	//For finding a room from a t_link.
-	if (find_room(rooms, "1"))
-		ft_putendl_col_fd(GREEN, "A room named \"1\" exists.", 1);
-	else
-		ft_putendl("No room named \"1\" exists.");
+	path_bot(rooms, rooms, path);
 	
 	//algorithm to print moves
 	return (0);
