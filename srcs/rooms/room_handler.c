@@ -28,8 +28,13 @@ t_room	*add_room(t_room **room, char *name, int xpos, int ypos, int type)
 	while (tmp->next)
 	{
 		ft_strequ(name, tmp->name) ? (DUP_NAME) : NULL;
+		if (tmp->pos.x == xpos)
+			tmp->pos.y == ypos ? (POS_CLASH) : NULL;
 		tmp = tmp->next;
 	}
+	ft_strequ(name, tmp->name) ? (DUP_NAME) : NULL;
+	if (tmp->pos.x == xpos)
+			tmp->pos.y == ypos ? (POS_CLASH) : NULL;
 	tmp->next = new_room(name, xpos, ypos, type);
 	return (*room);
 }

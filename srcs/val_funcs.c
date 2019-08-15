@@ -6,7 +6,7 @@
 /*   By: bmarks <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 10:30:24 by bmarks            #+#    #+#             */
-/*   Updated: 2019/08/02 12:17:00 by bmarks           ###   ########.fr       */
+/*   Updated: 2019/08/15 13:09:48 by bmarks           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,25 @@ t_room	*val_room(char *s, char **map, int type, t_room **room)
 	return (*room);
 }
 
+void	link_check(char **link, t_room **room)
+{
+	t_room	*tmp;
+	int		i;
+
+	i = 0;
+	tmp = *room;
+	ft_strequ(link[0], link[1]) ? (MISLINK) : NULL;
+	while (tmp->next)
+	{
+		i = ft_strequ(link[0], tmp->name) ? i + 1 : i;
+		i = ft_strequ(link[1], tmp->name) ? i + 1 : i;
+		tmp = tmp->next;
+	}
+	i = ft_strequ(link[0], tmp->name) ? i + 1 : i;
+	i = ft_strequ(link[1], tmp->name) ? i + 1 : i;
+	i != 2 ? (MISLINK) : NULL;
+}
+
 void	val_link(char *s, char **map, t_room **room)
 {
 	char	**pair;
@@ -68,7 +87,7 @@ void	val_link(char *s, char **map, t_room **room)
 		n++;
 	if (n != 2)
 		lemerror();
-	//CHECK IF BOTH ROOMS EXIST
+	link_check(pair, room);
 	add_link(room, pair[0], pair[1]);
 	add_link(room, pair[1], pair[0]);
 	map[map_count()] = ft_strdup(s);

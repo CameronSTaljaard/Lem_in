@@ -6,7 +6,7 @@
 /*   By: bmarks <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 10:51:39 by bmarks            #+#    #+#             */
-/*   Updated: 2019/08/01 14:27:43 by bmarks           ###   ########.fr       */
+/*   Updated: 2019/08/15 13:09:50 by bmarks           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@
 
 # define MAL_ERROR {ft_putendl("Error : Failed to malloc."); exit(1);}
 # define DUP_NAME {ft_putendl("Error: Duplicate room names."); exit(1);}
+# define POS_CLASH {ft_putendl("Error : Overlapping rooms."); exit(1);}
 # define DUP_LINK {ft_putendl("Error: Duplicate links."); exit(1);}
+# define MISLINK {ft_putendl("Error: Invalid room link."); exit(1);}
 
 /*
 **	x and y position of room for visualiser and checking overlapping rooms.
@@ -51,7 +53,7 @@ void				val_ants(char *s, char **map, t_room **room);
 t_room				*val_room(char *s, char **map, int type, t_room **room);
 void				val_link(char *s, char **map, t_room **room);
 int					populate_map(char **file, char **map, t_room **room);
-//void				link_check(char **link);
+void				link_check(char **link, t_room **room);
 
 /*
 ** Debug
