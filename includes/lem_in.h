@@ -102,6 +102,8 @@ t_room				*find_room(t_room *room, char *name);
 t_path				*new_path(char *room_name);
 t_path				*add_path(t_path **path, char *room_name);
 t_path				*path_bot(t_room *start, t_room *room, t_path *path);
+t_path				*dup_path(t_path *path);
+void				free_path(t_path **path);
 
 int					map_count(void);
 

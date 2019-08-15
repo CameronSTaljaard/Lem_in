@@ -38,7 +38,7 @@ void	print_path(t_path *path)
 	while (path)
 	{
 		ft_putstr_col_fd(CYAN, path->room_name, 1);
-		ft_putchar(' ');
+		(path->next_room) ? ft_putstr_col_fd(CYAN, "->", 1) : NULL;
 		path = path->next_room;
 	}
 	ft_putchar('\n');
@@ -48,23 +48,23 @@ t_path	*path_bot(t_room *start, t_room *room, t_path *path)
 {
 	t_path *tmp;
 
-	tmp = path;
+	tmp = dup_path(path);
 	add_path(&tmp, room->name);
 	
-	// Free path later.
 	if (contains_dup(tmp))
+	{
+		(tmp) ? (free_path(&tmp)) : NULL;
 		return (NULL);
-	//print_path(path);
+	}
 	if (room->type == 2)
 	{
-		ft_putendl("Found end");
+		ft_putstr("Found end : ");
 		print_path(tmp);
 		return (tmp);
 	}
-
 	while (room->links)
 	{
-		if (!(link_contains(path, room->links->link)))
+		if (!(link_contains(tmp, room->links->link)))
 			path_bot(start, find_room(start, room->links->link), tmp);
 		room->links = room->links->next;
 	}
