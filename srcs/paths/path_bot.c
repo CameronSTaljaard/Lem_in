@@ -26,7 +26,7 @@ int		link_contains(t_path *path, char *name)
 {
 	while (path)
 	{
-		if (path->room_name == name)
+		if (ft_strequ(path->room_name, name))
 			return (1);
 		path = path->next_room;
 	}
@@ -46,19 +46,29 @@ void	print_path(t_path *path)
 
 t_path	*path_bot(t_room *start, t_room *room, t_path *path)
 {
-	add_path(&path, room->name);
-	if (contains_dup(path))
+	t_path *tmp;
+
+	tmp = path;
+	add_path(&tmp, room->name);
+	
+	// Free path later.
+	if (contains_dup(tmp))
 		return (NULL);
-	print_path(path);
+
+	//print_path(path);
+
 	if (room->type == 2)
 	{
-		ft_putendl("End");
-		print_path(path);
-		return (path);
+		ft_putendl("Found end");
+		print_path(tmp);
+		return (tmp);
 	}
+
 	while (room->links)
 	{
-		path_bot(start, find_room(start, room->links->link), path);
+		//ft_putstr(room->name); ft_putstr("->"); ft_putendl(room->links->link);
+		if (!(link_contains(path, room->links->link)))
+			path_bot(start, find_room(start, room->links->link), tmp);
 		room->links = room->links->next;
 	}
 	return (NULL);
