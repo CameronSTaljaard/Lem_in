@@ -41,5 +41,4 @@ void	path_bot(t_room *start, t_room *room, t_path *path, t_path **paths)
 			path_bot(start, find_room(start, tmp_link->link), tmp, paths);
 		tmp_link = tmp_link->next;
 	}
-	return ;
 }

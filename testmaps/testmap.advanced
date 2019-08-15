@@ -7,6 +7,7 @@ Theatre 9 5
 Passage 10 3
 Bathroom 1 5
 Bedroom 4 8
+Basement 12 2
 ##end
 End 10 32
 #ROOM LINKS
@@ -15,5 +16,6 @@ Hallway-Start
 Hallway-Theatre
 Hallway-Passage
 Hallway-Bedroom
-Hallway-End
+Hallway-Basement
+Basement-End
 ##invalid commands are ignored
