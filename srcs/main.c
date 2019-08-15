@@ -29,9 +29,9 @@ int			main(void)
 	path_bot(rooms, rooms, path, paths);
 
 	// Function to make sure exit is never the first room.
-	//if (rooms->type == 2)
-	//	swap_rooms(&rooms);
-
+	// This function is untested.
+	if (rooms->type == 2)
+		swap_rooms(&rooms);
 	if (!paths[i])
 		NO_PATHS;
 	sort_paths(paths, array_length(paths));
