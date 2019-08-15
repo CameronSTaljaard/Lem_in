@@ -33,6 +33,9 @@
 # define DUP_LINK {ft_putendl("Error: Duplicate links."); exit(1);}
 # define MISLINK {ft_putendl("Error: Invalid room link."); exit(1);}
 
+# define PATHS_MAX 255
+# define MAP_MAX 100000
+
 /*
 **	x and y position of room for visualiser and checking overlapping rooms.
 */
@@ -85,25 +88,31 @@ void				link_check(char **link, t_room **room);
 void				intro(void);
 void				disp_rooms(t_room *rooms);
 void				disp_map(char **map);
+void				print_path(t_path *path);
 
 
 /*
-** Room handling
+** List handling
 */
 t_room				*new_room(char *name, int xpos, int ypos, int type);
 t_room				*add_room(t_room **room, char *name, int xpos, int ypos, int type);
+void				free_rooms(t_room **room);
+
 t_links				*new_link(char *name);
 void				add_link(t_room **room, char *name1, char *name2);
+void				free_links(t_links **link);
+
+t_path				*new_path(char *room_name);
+t_path				*add_path(t_path **path, char *room_name);
+void				free_paths(t_path **path);
 
 /*
 ** Room Navigation
 */
 t_room				*find_room(t_room *room, char *name);
-t_path				*new_path(char *room_name);
-t_path				*add_path(t_path **path, char *room_name);
-t_path				*path_bot(t_room *start, t_room *room, t_path *path);
+void				path_bot(t_room *start, t_room *room, t_path *path, t_path **paths);
 t_path				*dup_path(t_path *path);
-void				free_path(t_path **path);
+size_t				path_length(t_path *path);
 
 int					map_count(void);
 

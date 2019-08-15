@@ -15,20 +15,21 @@
 int			main(void)
 {
 	char			*file;
-	char			*map[100000];
+	char			*map[MAP_MAX];
 	t_room			*rooms;
 	t_path			*path;
+	t_path			*paths[PATHS_MAX] = {0};
+	size_t			i;
 
+	i = 0;
 	path = NULL;
-	//intro();
 	file = NULL;
 	populate_map(&file, map, &rooms);
-	//disp_map(map);
-	//disp_rooms(rooms);
 	rooms->ant_count = ft_atoi(map[0]);
-	//For finding a room from a t_link.
-	path_bot(rooms, rooms, path);
-	
+	path_bot(rooms, rooms, path, paths);
+	while (paths[i])
+		print_path(paths[i++]);
+	free_rooms(&rooms);
 	//algorithm to print moves
 	return (0);
 }

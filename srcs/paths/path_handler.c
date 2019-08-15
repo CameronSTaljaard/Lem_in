@@ -1,6 +1,6 @@
 #include <lem_in.h>
 
-void	free_path(t_path **path)
+void	free_paths(t_path **path)
 {
 	t_path *next;
 
@@ -54,4 +54,17 @@ t_path	*add_path(t_path **path, char *room_name)
 		tmp = tmp->next_room;
 	tmp->next_room = new_path(room_name);
 	return (*path);
+}
+
+size_t	path_length(t_path *path)
+{
+	size_t	index;
+
+	index = 0;
+	while (path)
+	{
+		index++;
+		path = path->next_room;
+	}
+	return (index);
 }

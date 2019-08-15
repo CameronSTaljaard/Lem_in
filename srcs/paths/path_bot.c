@@ -44,29 +44,32 @@ void	print_path(t_path *path)
 	ft_putchar('\n');
 }
 
-t_path	*path_bot(t_room *start, t_room *room, t_path *path)
+void	path_bot(t_room *start, t_room *room, t_path *path, t_path **paths)
 {
-	t_path *tmp;
+	t_path	*tmp;
+	size_t	index;
 
+	index = 0;
 	tmp = dup_path(path);
 	add_path(&tmp, room->name);
 	
 	if (contains_dup(tmp))
 	{
-		(tmp) ? (free_path(&tmp)) : NULL;
-		return (NULL);
+		(tmp) ? (free_paths(&tmp)) : NULL;
+		return ;
 	}
 	if (room->type == 2)
 	{
-		ft_putstr("Found end : ");
-		print_path(tmp);
-		return (tmp);
+		while(paths[index])
+			index++;
+		paths[index] = tmp;
+		return ;
 	}
 	while (room->links)
 	{
 		if (!(link_contains(tmp, room->links->link)))
-			path_bot(start, find_room(start, room->links->link), tmp);
+			path_bot(start, find_room(start, room->links->link), tmp, paths);
 		room->links = room->links->next;
 	}
-	return (NULL);
+	return ;
 }
