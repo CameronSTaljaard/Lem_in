@@ -27,6 +27,10 @@ int			main(void)
 	populate_map(&file, map, &rooms);
 	rooms->ant_count = ft_atoi(map[0]);
 	path_bot(rooms, rooms, path, paths);
+	//if (rooms->type == 2)
+	//	swap_rooms(&rooms);
+	if (!paths[i])
+		NO_PATHS;
 	while (paths[i])
 		print_path(paths[i++]);
 	free_rooms(&rooms);

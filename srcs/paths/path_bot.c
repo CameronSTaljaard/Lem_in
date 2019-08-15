@@ -48,8 +48,10 @@ void	path_bot(t_room *start, t_room *room, t_path *path, t_path **paths)
 {
 	t_path	*tmp;
 	size_t	index;
+	t_links	*tmp_link;
 
 	index = 0;
+	tmp_link = room->links;
 	tmp = dup_path(path);
 	add_path(&tmp, room->name);
 	
@@ -58,18 +60,18 @@ void	path_bot(t_room *start, t_room *room, t_path *path, t_path **paths)
 		(tmp) ? (free_paths(&tmp)) : NULL;
 		return ;
 	}
-	if (room->type == 2)
+	if (room->type == END)
 	{
 		while(paths[index])
 			index++;
 		paths[index] = tmp;
 		return ;
 	}
-	while (room->links)
+	while (tmp_link)
 	{
-		if (!(link_contains(tmp, room->links->link)))
-			path_bot(start, find_room(start, room->links->link), tmp, paths);
-		room->links = room->links->next;
+		//if (!(link_contains(tmp, tmp_link->link)))
+			path_bot(start, find_room(start, tmp_link->link), tmp, paths);
+		tmp_link = tmp_link->next;
 	}
 	return ;
 }

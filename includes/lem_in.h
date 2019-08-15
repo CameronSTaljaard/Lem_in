@@ -22,6 +22,7 @@
 # define MULTI_END {ft_putendl("Error : One end room allowed."); exit(1);}
 # define NO_START {ft_putendl("Error : Start room required."); exit(1);}
 # define NO_END {ft_putendl("Error : End room required."); exit(1);}
+# define NO_PATHS {ft_putendl("Error : No path to end."); exit(1);}
 # define NO_ANTS {ft_putendl("Error : No value for ants."); exit(1);}
 # define BAD_ANTS {ft_putendl("Error: Ants must be an integer >= 0."); exit(1);}
 # define BAD_X {ft_putendl("Error : Invalid value for x-coordinate."); exit(1);}
@@ -35,7 +36,7 @@
 
 # define PATHS_MAX 255
 # define MAP_MAX 100000
-
+# define END 2
 /*
 **	x and y position of room for visualiser and checking overlapping rooms.
 */
@@ -97,11 +98,9 @@ void				print_path(t_path *path);
 t_room				*new_room(char *name, int xpos, int ypos, int type);
 t_room				*add_room(t_room **room, char *name, int xpos, int ypos, int type);
 void				free_rooms(t_room **room);
-
 t_links				*new_link(char *name);
 void				add_link(t_room **room, char *name1, char *name2);
 void				free_links(t_links **link);
-
 t_path				*new_path(char *room_name);
 t_path				*add_path(t_path **path, char *room_name);
 void				free_paths(t_path **path);
