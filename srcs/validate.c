@@ -6,7 +6,7 @@
 /*   By: bmarks <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 13:40:52 by bmarks            #+#    #+#             */
-/*   Updated: 2019/08/15 15:01:13 by bmarks           ###   ########.fr       */
+/*   Updated: 2019/08/19 16:26:05 by bmarks           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,8 +99,8 @@ void			validate(char *s, char **map, int mode, t_room **room)
 int				populate_map(char **file, char **map, t_room **room)
 {
 	get_next_line(0, file);
-	free(*file);
 	validate(*file, map, 0, room);
+	free(*file);
 	while (get_next_line(0, file))
 	{
 		validate(*file, map, 1, room);
