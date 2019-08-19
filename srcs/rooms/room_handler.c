@@ -54,3 +54,13 @@ void	free_rooms(t_room **room)
 	}
 	*room = NULL;
 }
+
+t_room	*find_start(t_room **rooms)
+{
+	t_room *tmp;
+
+	tmp = *rooms;
+	while (tmp && tmp->type != 1)
+		tmp = tmp->next;
+	return (tmp); 
+}

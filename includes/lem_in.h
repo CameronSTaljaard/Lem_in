@@ -124,5 +124,6 @@ void				sort_paths(t_path **path, int size);
 */
 int					map_count(void);
 size_t				array_length(t_path **path);
+t_room				*find_start(t_room **rooms);
 
 #endif

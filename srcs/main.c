@@ -18,7 +18,7 @@ int			main(void)
 	char			*map[MAP_MAX];
 	t_room			*rooms;
 	t_path			*path;
-	t_path			*paths[PATHS_MAX] = {0};
+	t_path			*paths[PATHS_MAX + 1] = {0};
 	size_t			i;
 
 	i = 0;
@@ -26,7 +26,7 @@ int			main(void)
 	file = NULL;
 	populate_map(&file, map, &rooms);
 	rooms->ant_count = ft_atoi(map[0]);
-	path_bot(rooms, rooms, path, paths);
+	path_bot(rooms, find_start(&rooms), path, paths);
 	if (!paths[i])
 		NO_PATHS;
 	sort_paths(paths, array_length(paths));
@@ -36,6 +36,7 @@ int			main(void)
 	while (paths[i])
 		free_paths(&paths[i]);
 	free_rooms(&rooms);
+	i = 0;
 	//algorithm to print moves
 	return (0);
 }
