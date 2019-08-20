@@ -6,7 +6,7 @@
 /*   By: bmarks <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 13:05:33 by bmarks            #+#    #+#             */
-/*   Updated: 2019/08/02 12:07:18 by bmarks           ###   ########.fr       */
+/*   Updated: 2019/08/20 14:19:27 by bmarks           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,18 +25,18 @@ int			main(void)
 	path = NULL;
 	file = NULL;
 	populate_map(&file, map, &rooms);
+	disp_map(map);
 	rooms->ant_count = ft_atoi(map[0]);
 	path_bot(rooms, find_start(&rooms), path, paths);
 	if (!paths[i])
 		NO_PATHS;
 	sort_paths(paths, array_length(paths));
-	i = 0;
+	//NO NEED TO PRINT PATHS, PRINT MOVE TURNS INSTEAD.
 	while (paths[i])
 		print_path(paths[i++]);
-	while (paths[i])
-		free_paths(&paths[i]);
-	free_rooms(&rooms);
 	i = 0;
-	//algorithm to print moves
+	while (paths[i])
+		free_paths(&paths[i++]);
+	free_rooms(&rooms);
 	return (0);
 }

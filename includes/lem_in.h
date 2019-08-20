@@ -6,7 +6,7 @@
 /*   By: bmarks <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 10:51:39 by bmarks            #+#    #+#             */
-/*   Updated: 2019/08/15 15:01:15 by bmarks           ###   ########.fr       */
+/*   Updated: 2019/08/20 11:53:51 by bmarks           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # define NO_END {ft_putendl("Error : End room required."); exit(1);}
 # define NO_PATHS {ft_putendl("Error : No path to end."); exit(1);}
 # define NO_ANTS {ft_putendl("Error : No value for ants."); exit(1);}
-# define BAD_ANTS {ft_putendl("Error: Ants must be an integer >= 0."); exit(1);}
+# define BAD_ANTS {ft_putendl("Error: Ants must be an integer > 0."); exit(1);}
 # define BAD_X {ft_putendl("Error : Invalid value for x-coordinate."); exit(1);}
 # define BAD_Y {ft_putendl("Error : Invalid value for y-coordinate."); exit(1);}
 
@@ -95,7 +95,6 @@ void				disp_rooms(t_room *rooms);
 void				disp_map(char **map);
 void				print_path(t_path *path);
 
-
 /*
 ** List handling
 */
@@ -117,7 +116,6 @@ void				path_bot(t_room *start, t_room *room, t_path *path, t_path **paths);
 t_path				*dup_path(t_path *path);
 size_t				path_length(t_path *path);
 void				sort_paths(t_path **path, int size);
-
 
 /*
 ** Misc

@@ -22,7 +22,9 @@ void	path_bot(t_room *start, t_room *room, t_path *path, t_path **paths)
 	tmp_link = room->links;
 	tmp = dup_path(path);
 	add_path(&tmp, room->name);
-	
+
+	if (index >= PATHS_MAX)
+		return ;
 	if (contains_dup(tmp))
 	{
 		(tmp) ? (free_paths(&tmp)) : NULL;

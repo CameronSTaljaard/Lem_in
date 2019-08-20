@@ -24,11 +24,11 @@ void	intro(void)
 		"##end DECLARED EXACTLY ONCE",
 		"ROOM LINKS SHOULD BE FORMATTED CORRECTLY (NAME1-NAME2)",
 		"NO ROOMS DECLARED AFTER ANY LINKS",
-		"\n\033[1;32mLIST OF ERRORS UNACCOUNTED FOR:",
-		"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
 		"[START] AND [END] NOT INTERLINKED",
 		"ROOMS HAVING THE SAME NAME",
 		"ROOMS HAVING THE SAME CO-ORDINATES",
+		"\n\033[1;32mLIST OF ERRORS UNACCOUNTED FOR:",
+		"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
 		"idk what else..."};
 
 	while (++i < 7)
@@ -50,7 +50,7 @@ void	disp_map(char **map)
 		ft_putchar('\n');
 		i++;
 	}
-	printf("\n\n");
+	ft_putstr("\n");
 }
 
 void	disp_links(t_links *link)
