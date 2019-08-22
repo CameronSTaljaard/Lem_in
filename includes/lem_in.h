@@ -6,7 +6,7 @@
 /*   By: bmarks <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 10:51:39 by bmarks            #+#    #+#             */
-/*   Updated: 2019/08/20 11:53:51 by bmarks           ###   ########.fr       */
+/*   Updated: 2019/08/22 10:51:22 by bmarks           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ typedef struct		s_room
 	t_links			*links;
 	int				type;
 	int				ant_count;
+	int				x_path;
 	struct s_room	*next;
 }					t_room;
 
@@ -116,6 +117,13 @@ void				path_bot(t_room *start, t_room *room, t_path *path, t_path **paths);
 t_path				*dup_path(t_path *path);
 size_t				path_length(t_path *path);
 void				sort_paths(t_path **path, int size);
+
+/*
+** Run, Antonio, run!
+*/
+
+void				traversal(t_path **paths, t_room **rooms);
+void				path_filter(t_path **paths, t_path **filt, t_room **rooms);
 
 /*
 ** Misc

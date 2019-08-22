@@ -5,6 +5,7 @@ SRC_DIR 		= ./srcs/
 ROOMS_DIR		= $(SRC_DIR)rooms/
 DEBUG_DIR		= $(SRC_DIR)debug/
 PATHS_DIR		= $(SRC_DIR)paths/
+TRAVEL_DIR		= $(SRC_DIR)travel/
 LIBRARIES 		= -lft -Llibft
 LIBFT			= ./libft/*
 INCLUDES 		= -I./libft/includes -I./includes
@@ -22,6 +23,7 @@ EOC				:="\033[0;0m"
 SRCS		= $(SRC_DIR)main.c $(SRC_DIR)val_funcs.c $(SRC_DIR)validate.c $(DEBUG_DIR)display.c
 SRCS		+= $(ROOMS_DIR)room_handler.c  $(ROOMS_DIR)room_nav.c $(ROOMS_DIR)link_handler.c
 SRCS		+= $(PATHS_DIR)path_bot.c $(PATHS_DIR)path_handler.c $(PATHS_DIR)path_functions.c
+SRCS		+= $(TRAVEL_DIR)path_filter.c $(TRAVEL_DIR)traversal.c
 OBJS		= $(SRCS:.c=.o)
 
 all:		$(NAME)

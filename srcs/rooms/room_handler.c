@@ -11,6 +11,7 @@ t_room	*new_room(char *name, int xpos, int ypos, int type)
 	new->pos.y = ypos;
 	new->type = type;
 	new->ant_count = 0;
+	new->x_path = 0;
 	new->links = NULL;
 	new->next = NULL;
 	return (new);
