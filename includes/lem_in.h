@@ -6,7 +6,7 @@
 /*   By: bmarks <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 10:51:39 by bmarks            #+#    #+#             */
-/*   Updated: 2019/08/22 10:51:22 by bmarks           ###   ########.fr       */
+/*   Updated: 2019/08/22 15:27:43 by bmarks           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,13 @@ typedef struct		s_staend
 	int				end;
 }					t_staend;
 
+typedef struct		s_ant
+{
+	int				ant_num;
+	char			*curr_room;
+	t_path			*path;
+}					t_ant;
+
 /*
 ** Validation
 */
@@ -124,6 +131,7 @@ void				sort_paths(t_path **path, int size);
 
 void				traversal(t_path **paths, t_room **rooms);
 void				path_filter(t_path **paths, t_path **filt, t_room **rooms);
+void				disp_ants(t_ant *ant, t_room **rooms);
 
 /*
 ** Misc

@@ -74,6 +74,9 @@ void	disp_rooms(t_room *rooms)
 		ft_putchar(' ');
 		ft_putnbr_col_fd(CYAN, rooms->pos.y, 1);
 		ft_putendl("");
+		ft_putstr("Number of Ants: ");
+		ft_putnbr_col_fd(CYAN, rooms->ant_count, 1);
+		ft_putendl("");
 		ft_putstr("Links:");
 		ft_putchar(' ');
 		disp_links(rooms->links);
@@ -81,5 +84,37 @@ void	disp_rooms(t_room *rooms)
 		ft_putendl("");
 		ft_putendl("");
 		rooms = rooms->next;
+	}
+}
+
+void	disp_ants(t_ant *ant, t_room **rooms)
+{
+	t_room	*tmp;
+
+	tmp = *rooms;
+	while (tmp && tmp->type != 2)
+		tmp = tmp->next;
+	if (!ft_strequ(ant->curr_room, tmp->name))
+	{
+		tmp = *rooms;
+		while (!ft_strequ(tmp->name, ant->curr_room))
+			tmp = tmp->next;
+		tmp->ant_count -= 1;
+		ft_putchar('L');
+		ft_putnbr(ant->ant_num);
+		ft_putchar('-');
+		ant->path = ant->path->next_room;
+		ant->curr_room = ant->path->room_name;
+		tmp = *rooms;
+		while (!ft_strequ(tmp->name, ant->curr_room))
+			tmp = tmp->next;
+		tmp->ant_count += 1;
+		ft_putstr(ant->curr_room);
+	}
+	else
+	{
+		//ignore this else statement.
+		//delete it eventually.
+		ft_putstr("    ");
 	}
 }

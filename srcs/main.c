@@ -6,7 +6,7 @@
 /*   By: bmarks <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 13:05:33 by bmarks            #+#    #+#             */
-/*   Updated: 2019/08/22 10:51:51 by bmarks           ###   ########.fr       */
+/*   Updated: 2019/08/22 15:27:37 by bmarks           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ int			main(void)
 	if (!paths[i])
 		NO_PATHS;
 	sort_paths(paths, array_length(paths));
-	//NO NEED TO PRINT PATHS, PRINT MOVE TURNS INSTEAD.
 	traversal(paths, &rooms);
 	while (paths[i])
 		print_path(paths[i++]);
