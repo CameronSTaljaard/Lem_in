@@ -6,7 +6,7 @@
 /*   By: bmarks <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 13:05:33 by bmarks            #+#    #+#             */
-/*   Updated: 2019/08/22 15:27:37 by bmarks           ###   ########.fr       */
+/*   Updated: 2019/08/26 11:06:02 by bmarks           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,6 @@ int			main(void)
 		NO_PATHS;
 	sort_paths(paths, array_length(paths));
 	traversal(paths, &rooms);
-	while (paths[i])
-		print_path(paths[i++]);
-	i = 0;
 	while (paths[i])
 		free_paths(&paths[i++]);
 	free_rooms(&rooms);

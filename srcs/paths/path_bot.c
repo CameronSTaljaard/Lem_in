@@ -22,7 +22,6 @@ void	path_bot(t_room *start, t_room *room, t_path *path, t_path **paths)
 	tmp_link = room->links;
 	tmp = dup_path(path);
 	add_path(&tmp, room->name);
-
 	if (index >= PATHS_MAX)
 		return ;
 	if (contains_dup(tmp))
@@ -32,7 +31,7 @@ void	path_bot(t_room *start, t_room *room, t_path *path, t_path **paths)
 	}
 	if (room->type == END)
 	{
-		while(paths[index] && index < PATHS_MAX)
+		while (paths[index] && index < PATHS_MAX)
 			index++;
 		paths[index] = tmp;
 		return ;

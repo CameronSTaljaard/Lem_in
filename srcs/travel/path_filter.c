@@ -6,7 +6,7 @@
 /*   By: bmarks <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 09:57:55 by bmarks            #+#    #+#             */
-/*   Updated: 2019/08/22 11:21:45 by bmarks           ###   ########.fr       */
+/*   Updated: 2019/08/26 13:36:08 by bmarks           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ static int	end_links(t_room *rooms)
 		lnum++;
 		elinks = elinks->next;
 	}
-
 	return (lnum);
 }
 
@@ -63,7 +62,7 @@ static int	no_cross(t_path *path, t_room *rooms)
 	return (1);
 }
 
-void	path_filter(t_path **paths, t_path **filt, t_room **rooms)
+void		path_filter(t_path **paths, t_path **filt, t_room **rooms)
 {
 	int	i;
 	int	j;

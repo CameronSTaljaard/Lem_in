@@ -17,6 +17,7 @@ t_room	*new_room(char *name, int xpos, int ypos, int type)
 	return (new);
 }
 
+//5 PARAMETER FUNCTIONS ARE A NON NON
 t_room	*add_room(t_room **room, char *name, int xpos, int ypos, int type)
 {
 	t_room *tmp;
@@ -36,7 +37,7 @@ t_room	*add_room(t_room **room, char *name, int xpos, int ypos, int type)
 	}
 	ft_strequ(name, tmp->name) ? (DUP_NAME) : NULL;
 	if (tmp->pos.x == xpos)
-			tmp->pos.y == ypos ? (POS_CLASH) : NULL;
+		tmp->pos.y == ypos ? (POS_CLASH) : NULL;
 	tmp->next = new_room(name, xpos, ypos, type);
 	return (*room);
 }
@@ -45,7 +46,7 @@ void	free_rooms(t_room **room)
 {
 	t_room *next;
 
-	while(*room)
+	while (*room)
 	{
 		free_links(&((*room)->links));
 		free((*room)->name);
@@ -63,5 +64,5 @@ t_room	*find_start(t_room **rooms)
 	tmp = *rooms;
 	while (tmp && tmp->type != 1)
 		tmp = tmp->next;
-	return (tmp); 
+	return (tmp);
 }

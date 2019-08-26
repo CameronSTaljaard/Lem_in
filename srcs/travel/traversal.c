@@ -6,7 +6,7 @@
 /*   By: bmarks <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 10:12:49 by bmarks            #+#    #+#             */
-/*   Updated: 2019/08/22 15:27:40 by bmarks           ###   ########.fr       */
+/*   Updated: 2019/08/26 13:50:00 by bmarks           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,30 @@
 
 static void	march(t_ant **ants, t_room **rooms)
 {
-	int		turn;
-	int 	i;
+	int		i;
 	t_room	*end;
 	int		num;
 
 	num = (*rooms)->ant_count;
 	end = *rooms;
-	turn = 1;
 	while (end && end->type != 2)
 		end = end->next;
 	while (end->ant_count != num)
 	{
 		i = 0;
-		ft_putnbr(turn++);
-		ft_putstr(": ");
-		while (ants[i])
+		while (i < num)
 		{
-			disp_ants(ants[i++], rooms);
-			if (ants[i])
+			while (ft_strequ(ants[i]->curr_room, end->name))
+			{
+				i = (i < num - 1) ? i + 1 : i;
+				if (i == num - 1)
+					break ;
+			}
+			disp_ants(ants[i], rooms);
+			if (i++ < num)
 				ft_putstr(" ");
 		}
 		ft_putendl("");
-		//disp_rooms(*rooms);
 	}
 }
 
@@ -72,8 +73,4 @@ void		traversal(t_path **paths, t_room **rooms)
 	i = 0;
 	path_filter(paths, filt, rooms);
 	colony(filt, rooms);
-	ft_putendl("FILTERED PATHS:");
-	while (filt[i])
-		print_path(filt[i++]);
-	ft_putstr("~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 }

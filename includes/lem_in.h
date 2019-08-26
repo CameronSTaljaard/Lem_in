@@ -6,7 +6,7 @@
 /*   By: bmarks <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 10:51:39 by bmarks            #+#    #+#             */
-/*   Updated: 2019/08/22 15:27:43 by bmarks           ###   ########.fr       */
+/*   Updated: 2019/08/26 13:47:22 by bmarks           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@
 # define PATHS_MAX 255
 # define MAP_MAX 100000
 # define END 2
+
 /*
 **	x and y position of room for visualiser and checking overlapping rooms.
 */
@@ -46,7 +47,6 @@ typedef struct		s_path
 	char			*room_name;
 	struct s_path	*next_room;
 }					t_path;
-
 
 typedef struct		s_co_ord
 {
@@ -93,12 +93,11 @@ t_room				*val_room(char *s, char **map, int type, t_room **room);
 void				val_link(char *s, char **map, t_room **room);
 int					populate_map(char **file, char **map, t_room **room);
 void				link_check(char **link, t_room **room);
-int 				contains_dup(t_path *start);
+int					contains_dup(t_path *start);
 
 /*
 ** Debug
 */
-void				intro(void);
 void				disp_rooms(t_room *rooms);
 void				disp_map(char **map);
 void				print_path(t_path *path);
@@ -107,7 +106,8 @@ void				print_path(t_path *path);
 ** List handling
 */
 t_room				*new_room(char *name, int xpos, int ypos, int type);
-t_room				*add_room(t_room **room, char *name, int xpos, int ypos, int type);
+t_room				*add_room(t_room **room, char *name, int xpos, int ypos,
+		int type);
 void				free_rooms(t_room **room);
 t_links				*new_link(char *name);
 void				add_link(t_room **room, char *name1, char *name2);
@@ -120,7 +120,8 @@ void				free_paths(t_path **path);
 ** Room Navigation
 */
 t_room				*find_room(t_room *room, char *name);
-void				path_bot(t_room *start, t_room *room, t_path *path, t_path **paths);
+void				path_bot(t_room *start, t_room *room, t_path *path,
+		t_path **paths);
 t_path				*dup_path(t_path *path);
 size_t				path_length(t_path *path);
 void				sort_paths(t_path **path, int size);

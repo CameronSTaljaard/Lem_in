@@ -6,7 +6,7 @@
 /*   By: bmarks <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 10:30:24 by bmarks            #+#    #+#             */
-/*   Updated: 2019/08/15 14:18:21 by bmarks           ###   ########.fr       */
+/*   Updated: 2019/08/26 13:33:22 by bmarks           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	val_ants(char *s, char **map, t_room **room)
 		NO_ANTS;
 	if (ft_atoi(s) < 0)
 		BAD_ANTS;
-	//ASSIGN NUMBER OF ANTS
 	map[0] = ft_strdup(s);
 	ft_strdel(&ants);
 }

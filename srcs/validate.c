@@ -6,7 +6,7 @@
 /*   By: bmarks <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 13:40:52 by bmarks            #+#    #+#             */
-/*   Updated: 2019/08/19 16:26:05 by bmarks           ###   ########.fr       */
+/*   Updated: 2019/08/26 13:30:38 by bmarks           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ void			validate(char *s, char **map, int mode, t_room **room)
 			NO_START;
 		if (!se.end)
 			NO_END;
-		//NEED TO CHECK THAT START AND END CONNECTED
 	}
 	else if (mode == 0)
 		val_ants(s, map, room);

@@ -8,7 +8,7 @@ void	free_paths(t_path **path)
 	{
 		next = (*path)->next_room;
 		free((*path)->room_name);
-		*path =  (*path)->next_room;
+		*path = (*path)->next_room;
 	}
 	*path = NULL;
 }
@@ -30,7 +30,6 @@ t_path	*dup_path(t_path *path)
 
 	if (!path)
 		return (NULL);
-
 	new = NULL;
 	while (path)
 	{
