@@ -6,7 +6,7 @@
 /*   By: bmarks <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 10:12:49 by bmarks            #+#    #+#             */
-/*   Updated: 2019/08/26 13:50:00 by bmarks           ###   ########.fr       */
+/*   Updated: 2019/08/27 16:39:20 by bmarks           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,7 @@ static void	march(t_ant **ants, t_room **rooms)
 	{
 		i = 0;
 		while (i < num)
-		{
-			while (ft_strequ(ants[i]->curr_room, end->name))
-			{
-				i = (i < num - 1) ? i + 1 : i;
-				if (i == num - 1)
-					break ;
-			}
-			disp_ants(ants[i], rooms);
-			if (i++ < num)
-				ft_putstr(" ");
-		}
+			disp_ants(ants[i++], rooms);
 		ft_putendl("");
 	}
 }
@@ -67,10 +57,12 @@ static void	colony(t_path **paths, t_room **rooms)
 
 void		traversal(t_path **paths, t_room **rooms)
 {
-	t_path	*filt[PATHS_MAX + 1] = {0};
+	t_path	*filt[PATHS_MAX + 1];
 	int		i;
 
 	i = 0;
+	while (i < PATHS_MAX + 1)
+		filt[i++] = 0;
 	path_filter(paths, filt, rooms);
 	colony(filt, rooms);
 }

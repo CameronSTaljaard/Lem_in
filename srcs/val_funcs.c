@@ -6,7 +6,7 @@
 /*   By: bmarks <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 10:30:24 by bmarks            #+#    #+#             */
-/*   Updated: 2019/08/27 12:03:58 by bmarks           ###   ########.fr       */
+/*   Updated: 2019/08/27 16:48:32 by bmarks           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ t_room	*val_room(char *s, char **map, int type, t_room **room)
 	map[map_count()] = ft_strdup(s);
 	ft_strdel(&pos[0]);
 	ft_strdel(&pos[1]);
-	add_room(room, info[0], ft_atoi(info[1]), ft_atoi(info[2]), type);
+	add_room(room, info, type);
 	free(info[0]);
 	free(info[1]);
 	free(info[2]);

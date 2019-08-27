@@ -1,6 +1,6 @@
 #include <libft.h>
 
-int			string_input(char *str)
+int	string_input(char *str)
 {
 	while (*str)
 	{

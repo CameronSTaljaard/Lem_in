@@ -1,6 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   path_bot.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ctaljaar <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/08/27 16:41:48 by ctaljaar          #+#    #+#             */
+/*   Updated: 2019/08/27 16:44:40 by bmarks           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <lem_in.h>
 
-// Might be pointless.
 int		link_contains(t_path *path, char *name)
 {
 	while (path)
@@ -22,8 +33,6 @@ void	path_bot(t_room *start, t_room *room, t_path *path, t_path **paths)
 	tmp_link = room->links;
 	tmp = dup_path(path);
 	add_path(&tmp, room->name);
-	if (index >= PATHS_MAX)
-		return ;
 	if (contains_dup(tmp))
 	{
 		(tmp) ? (free_paths(&tmp)) : NULL;

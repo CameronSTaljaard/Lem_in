@@ -6,7 +6,7 @@
 /*   By: bmarks <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 13:05:33 by bmarks            #+#    #+#             */
-/*   Updated: 2019/08/27 13:07:19 by bmarks           ###   ########.fr       */
+/*   Updated: 2019/08/27 16:38:09 by bmarks           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int			map_count(void)
 
 int			main(void)
 {
-	char			*file;
 	char			*map[MAP_MAX];
 	t_room			*rooms;
 	t_path			*path;
@@ -34,9 +33,8 @@ int			main(void)
 		paths[i++] = 0;
 	i = 0;
 	path = NULL;
-	file = NULL;
-	//DOES FILE REALLY NEED TO BE HERE?
-	populate_map(&file, map, &rooms);
+	populate_map(map, &rooms);
+	start_swap(&rooms);
 	set_ants(map, &rooms);
 	disp_map(map);
 	path_bot(rooms, find_start(&rooms), path, paths);
