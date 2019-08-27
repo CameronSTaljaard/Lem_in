@@ -6,7 +6,7 @@
 /*   By: bmarks <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 10:51:39 by bmarks            #+#    #+#             */
-/*   Updated: 2019/08/26 13:47:22 by bmarks           ###   ########.fr       */
+/*   Updated: 2019/08/27 11:56:11 by bmarks           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ void				val_link(char *s, char **map, t_room **room);
 int					populate_map(char **file, char **map, t_room **room);
 void				link_check(char **link, t_room **room);
 int					contains_dup(t_path *start);
+void				set_ants(char **map, t_room **rooms);
 
 /*
 ** Debug

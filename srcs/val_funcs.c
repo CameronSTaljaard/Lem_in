@@ -6,31 +6,51 @@
 /*   By: bmarks <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 10:30:24 by bmarks            #+#    #+#             */
-/*   Updated: 2019/08/26 13:33:22 by bmarks           ###   ########.fr       */
+/*   Updated: 2019/08/27 12:03:58 by bmarks           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lem_in.h>
 
-int		map_count(void)
+void	set_ants(char **map, t_room **rooms)
 {
-	static int	i;
+	int		i;
+	t_room	*tmp;
 
-	i++;
-	return (i);
+	tmp = *rooms;
+	i = 0;
+	while (tmp && tmp->type != 1)
+		tmp = tmp->next;
+	while (!ft_isdigit(map[i][0]))
+		i++;
+	tmp->ant_count = ft_atoi(map[i]);
 }
 
 void	val_ants(char *s, char **map, t_room **room)
 {
 	char	*ants;
+	char	*file;
 
-	ants = ft_itoa(ft_atoi(s));
-	if (ft_strcmp(ants, s) != 0)
-		NO_ANTS;
-	if (ft_atoi(s) < 0)
-		BAD_ANTS;
-	map[0] = ft_strdup(s);
-	ft_strdel(&ants);
+	file = NULL;
+	if (ft_strncmp("#", s, 1) == 0)
+	{
+		if (ft_strcmp("#start", s + 1) == 0 || ft_strcmp("#end", s + 1) == 0)
+			NO_ANTS;
+		map[map_count()] = ft_strdup(s);
+		get_next_line(0, &file);
+		validate(file, map, 0, room);
+		free(file);
+	}
+	else
+	{
+		ants = ft_itoa(ft_atoi(s));
+		if (ft_strcmp(ants, s) != 0)
+			NO_ANTS;
+		if (ft_atoi(s) < 0)
+			BAD_ANTS;
+		map[map_count()] = ft_strdup(s);
+		ft_strdel(&ants);
+	}
 }
 
 t_room	*val_room(char *s, char **map, int type, t_room **room)
