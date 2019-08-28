@@ -6,7 +6,7 @@
 /*   By: bmarks <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 16:41:32 by bmarks            #+#    #+#             */
-/*   Updated: 2019/08/27 16:41:36 by bmarks           ###   ########.fr       */
+/*   Updated: 2019/08/28 10:26:05 by bmarks           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int		contains_dup(t_path *start)
 {
 	t_path *ptr1;
 	t_path *ptr2;
-	t_path *dup;
 
 	ptr1 = start;
 	while (ptr1 != NULL && ptr1->next_room != NULL)
@@ -47,8 +46,8 @@ void	print_path(t_path *path)
 
 void	sort_paths(t_path **path, int size)
 {
-	size_t	i;
-	size_t	j;
+	int		i;
+	int		j;
 	t_path	*tmp;
 
 	i = 0;

@@ -31,8 +31,7 @@ void	add_link(t_room **room, char *name1, char *name2)
 		while(tmp_link->next)
 		{
 
-			if (ft_strequ(tmp_link->link, name2))
-				DUP_LINK;
+			ft_strequ(tmp_link->link, name2) ? (DUP_LINK) : NULL;
 			tmp_link = tmp_link->next;
 		}
 		if (ft_strequ(tmp_link->link, name2))

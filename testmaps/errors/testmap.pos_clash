@@ -1,0 +1,12 @@
+#EVERY MAP HAS COMMENTS
+##EVERY MAP HAS COMMANDS THAT DONT EXIST
+18
+##start
+start 0 0
+##end
+end 10 10
+room 5 5
+room2 5 5
+start-room
+room-room2
+room2-end

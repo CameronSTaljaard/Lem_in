@@ -1,5 +1,6 @@
 NAME			= lem_in
 CC				= gcc
+FLAGS			= -Wall -Werror -Wextra
 LIBFT_DIRECTORY = ./libft
 SRC_DIR 		= ./srcs/
 ROOMS_DIR		= $(SRC_DIR)rooms/
