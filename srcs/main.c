@@ -45,7 +45,5 @@ int			main(void)
 	while (paths[i])
 		free_paths(&paths[i++]);
 	free_rooms(&rooms);
-	while (1)
-		usleep(50000);
 	return (0);
 }

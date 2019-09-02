@@ -12,17 +12,6 @@
 
 #include <lem_in.h>
 
-int		already_visitied(t_path *room, char *new_room)
-{
-	while (room)
-	{
-		if (ft_strequ(room->room_name, new_room))
-			return (1);
-		room = room->next_room;
-	}
-	return (0);
-}
-
 int		link_contains(t_path *path, char *name)
 {
 	while (path)
@@ -49,12 +38,11 @@ void	path_bot(t_room *start, t_room *room, t_path *path, t_path **paths)
 		free_paths(&tmp);
 		return ;
 	}
-	//if (contains_dup(tmp))
-	//{
-	//	free_paths(&tmp);
-	//	tmp = NULL;
-	//	return ;
-	//}
+	if (contains_dup(tmp))
+	{
+		free_paths(&tmp);
+		return ;
+	}
 	if (room->type == END)
 	{
 		while (paths[index] && index < PATHS_MAX)
@@ -66,8 +54,7 @@ void	path_bot(t_room *start, t_room *room, t_path *path, t_path **paths)
 	}
 	while (tmp_link)
 	{
-		if (!link_contains(tmp, tmp_link->link))
-			path_bot(start, find_room(start, tmp_link->link), tmp, paths);
+		path_bot(start, find_room(start, tmp_link->link), tmp, paths);
 		tmp_link = tmp_link->next;
 	}
 	free_paths(&tmp);
