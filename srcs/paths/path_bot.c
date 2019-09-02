@@ -35,7 +35,8 @@ void	path_bot(t_room *start, t_room *room, t_path *path, t_path **paths)
 	add_path(&tmp, room->name);
 	if (contains_dup(tmp))
 	{
-		(tmp) ? (free_paths(&tmp)) : NULL;
+		free_paths(&tmp);
+		tmp = NULL;
 		return ;
 	}
 	if (room->type == END)
@@ -50,4 +51,5 @@ void	path_bot(t_room *start, t_room *room, t_path *path, t_path **paths)
 		path_bot(start, find_room(start, tmp_link->link), tmp, paths);
 		tmp_link = tmp_link->next;
 	}
+	(tmp) ? free_paths(&tmp) : NULL;
 }
