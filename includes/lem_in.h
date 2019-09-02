@@ -36,6 +36,7 @@
 
 # define PATHS_MAX 255
 # define MAP_MAX 100000
+# define START 1
 # define END 2
 
 /*
@@ -68,6 +69,8 @@ typedef struct		s_room
 	int				type;
 	int				ant_count;
 	int				x_path;
+	int				id;
+	int				rcount;
 	struct s_room	*next;
 }					t_room;
 
@@ -102,11 +105,12 @@ void				set_ants(char **map, t_room **rooms);
 void				disp_rooms(t_room *rooms);
 void				disp_map(char **map);
 void				print_path(t_path *path);
+void				print_room_ids(t_room *room);
 
 /*
 ** List handling
 */
-t_room				*new_room(char *name, int xpos, int ypos, int type);
+t_room				*new_room(char *name, int xpos, int ypos, int type, int room_count);
 t_room				*add_room(t_room **room, char **info, int type);
 void				free_rooms(t_room **room);
 t_links				*new_link(char *name);

@@ -96,3 +96,12 @@ void		disp_ants(t_ant *ant, t_room **rooms)
 		}
 	}
 }
+
+void	print_room_ids(t_room *rooms)
+{
+	while(rooms)
+	{
+		printf("Room %s id is : %d\n", rooms->name, rooms->id);
+		rooms = rooms->next;
+	}
+}
