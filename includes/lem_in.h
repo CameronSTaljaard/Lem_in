@@ -137,7 +137,6 @@ t_path				*dup_path(t_path *path);
 size_t				path_length(t_path *path);
 void				sort_paths(t_path **path, int size);
 void				room_swap(t_room **rooms);
-void				create_tab(t_room *room, char ***tab);
 
 /*
 ** Run, Antonio, run!
