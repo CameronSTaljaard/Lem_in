@@ -6,7 +6,7 @@
 /*   By: bmarks <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 13:40:52 by bmarks            #+#    #+#             */
-/*   Updated: 2019/08/27 16:38:12 by bmarks           ###   ########.fr       */
+/*   Updated: 2019/09/03 09:54:07 by bmarks           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int		char_jam(char *s, char brk)
 	return (n);
 }
 
-static void		val_cmd(char *s, char **map, t_staend *se, t_room **room)
+static void		val_cmd(char *s, t_map *mappy, t_staend *se, t_room **room)
 {
 	char	*next;
 
@@ -37,7 +37,7 @@ static void		val_cmd(char *s, char **map, t_staend *se, t_room **room)
 		if (se->start == 1)
 			MULTI_START;
 		get_next_line(0, &next);
-		char_jam(next, ' ') == 2 ? val_room(next, map, 1, room) : (POOR_FORM);
+		char_jam(next, ' ') == 2 ? val_room(next, mappy, 1, room) : (POOR_FORM);
 		se->start = 1;
 		free(next);
 	}
@@ -46,28 +46,28 @@ static void		val_cmd(char *s, char **map, t_staend *se, t_room **room)
 		if (se->end == 1)
 			MULTI_END;
 		get_next_line(0, &next);
-		char_jam(next, ' ') == 2 ? val_room(next, map, 2, room) : (POOR_FORM);
+		char_jam(next, ' ') == 2 ? val_room(next, mappy, 2, room) : (POOR_FORM);
 		se->end = 1;
 		free(next);
 	}
 }
 
-static void		val_m1(char *s, int *roomy, char **map, t_room **room)
+static void		val_m1(char *s, int *roomy, t_map *mappy, t_room **room)
 {
 	if (char_jam(s, ' ') == 2 && *roomy == 0)
-		val_room(s, map, 0, room);
+		val_room(s, mappy, 0, room);
 	else if (char_jam(s, ' ') == 0 && char_jam(s, '-'))
 	{
 		if (*roomy == 0)
 			validate(NULL, NULL, 0, room);
 		*roomy = 1;
-		val_link(s, map, room);
+		val_link(s, mappy, room);
 	}
 	else
 		POOR_FORM;
 }
 
-void			validate(char *s, char **map, int mode, t_room **room)
+void			validate(char *s, t_map *mappy, int mode, t_room **room)
 {
 	static t_staend		se;
 	static int			roomy;
@@ -80,31 +80,31 @@ void			validate(char *s, char **map, int mode, t_room **room)
 			NO_END;
 	}
 	else if (mode == 0)
-		val_ants(s, map, room);
+		val_ants(s, mappy, room);
 	else if (ft_strncmp("#", s, 1) == 0)
 	{
-		map[map_count()] = ft_strdup(s);
+		mappy->map[map_count()] = ft_strdup(s);
 		if (ft_strncmp("#", s + 1, 1) == 0)
-			val_cmd(s, map, &se, room);
+			val_cmd(s, mappy, &se, room);
 	}
 	else if (ft_strncmp("L", s, 1) == 0)
 	{
 		POOR_FORM;
 	}
 	else if (mode == 1)
-		val_m1(s, &roomy, map, room);
+		val_m1(s, &roomy, mappy, room);
 }
 
-int				populate_map(char **map, t_room **room)
+int				populate_map(t_map *mappy, t_room **room)
 {
 	char	*file;
 
 	get_next_line(0, &file);
-	validate(file, map, 0, room);
+	validate(file, mappy, 0, room);
 	free(file);
 	while (get_next_line(0, &file))
 	{
-		validate(file, map, 1, room);
+		validate(file, mappy, 1, room);
 		(file) ? free(file) : NULL;
 	}
 	validate(NULL, NULL, 42, room);

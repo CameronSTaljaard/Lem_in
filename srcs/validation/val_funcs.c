@@ -6,13 +6,13 @@
 /*   By: bmarks <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 10:30:24 by bmarks            #+#    #+#             */
-/*   Updated: 2019/08/27 16:48:32 by bmarks           ###   ########.fr       */
+/*   Updated: 2019/09/03 10:47:45 by bmarks           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lem_in.h>
 
-void	set_ants(char **map, t_room **rooms)
+void	set_ants(t_map *mappy, t_room **rooms)
 {
 	int		i;
 	t_room	*tmp;
@@ -21,12 +21,12 @@ void	set_ants(char **map, t_room **rooms)
 	i = 0;
 	while (tmp && tmp->type != 1)
 		tmp = tmp->next;
-	while (!ft_isdigit(map[i][0]))
+	while (!ft_isdigit(mappy->map[i][0]))
 		i++;
-	tmp->ant_count = ft_atoi(map[i]);
+	tmp->ant_count = ft_atoi(mappy->map[i]);
 }
 
-void	val_ants(char *s, char **map, t_room **room)
+void	val_ants(char *s, t_map *mappy, t_room **room)
 {
 	char	*ants;
 	char	*file;
@@ -36,9 +36,9 @@ void	val_ants(char *s, char **map, t_room **room)
 	{
 		if (ft_strcmp("#start", s + 1) == 0 || ft_strcmp("#end", s + 1) == 0)
 			NO_ANTS;
-		map[map_count()] = ft_strdup(s);
+		mappy->map[map_count()] = ft_strdup(s);
 		get_next_line(0, &file);
-		validate(file, map, 0, room);
+		validate(file, mappy, 0, room);
 		free(file);
 	}
 	else
@@ -48,12 +48,12 @@ void	val_ants(char *s, char **map, t_room **room)
 			NO_ANTS;
 		if (ft_atoi(s) < 0)
 			BAD_ANTS;
-		map[map_count()] = ft_strdup(s);
+		mappy->map[map_count()] = ft_strdup(s);
 		ft_strdel(&ants);
 	}
 }
 
-t_room	*val_room(char *s, char **map, int type, t_room **room)
+t_room	*val_room(char *s, t_map *mappy, int type, t_room **room)
 {
 	char	**info;
 	char	*pos[2];
@@ -65,7 +65,7 @@ t_room	*val_room(char *s, char **map, int type, t_room **room)
 	pos[1] = ft_itoa(ft_atoi(info[2]));
 	if (ft_strcmp(pos[1], info[2]) != 0)
 		BAD_Y;
-	map[map_count()] = ft_strdup(s);
+	mappy->map[map_count()] = ft_strdup(s);
 	ft_strdel(&pos[0]);
 	ft_strdel(&pos[1]);
 	add_room(room, info, type);
@@ -95,10 +95,11 @@ void	link_check(char **link, t_room **room)
 	i != 2 ? (MISLINK) : NULL;
 }
 
-void	val_link(char *s, char **map, t_room **room)
+void	val_link(char *s, t_map *mappy, t_room **room)
 {
-	char	**pair;
-	int		n;
+	char		**pair;
+	int			n;
+	static int	link = 0;
 
 	n = 0;
 	pair = ft_strsplit(s, '-');
@@ -109,7 +110,8 @@ void	val_link(char *s, char **map, t_room **room)
 	link_check(pair, room);
 	add_link(room, pair[0], pair[1]);
 	add_link(room, pair[1], pair[0]);
-	map[map_count()] = ft_strdup(s);
+	mappy->map[map_count()] = ft_strdup(s);
+	mappy->links[link++] = ft_strdup(s);
 	free(pair[0]);
 	free(pair[1]);
 	free(pair);

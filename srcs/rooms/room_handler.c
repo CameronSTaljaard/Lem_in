@@ -6,7 +6,7 @@
 /*   By: ctaljaar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 16:45:12 by ctaljaar          #+#    #+#             */
-/*   Updated: 2019/08/27 16:51:27 by bmarks           ###   ########.fr       */
+/*   Updated: 2019/09/03 11:31:11 by bmarks           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,15 +82,20 @@ t_room	*find_start(t_room **rooms)
 	return (tmp);
 }
 
-void	start_swap(t_room **rooms)
+void	room_swap(t_room **rooms)
 {
 	t_room	*start;
+	t_room	*end;
 	t_room	*tmp;
+	t_room	*pre_end;
 
 	start = *rooms;
 	tmp = *rooms;
+	end = *rooms;
 	while (start && start->type != 1)
 		start = start->next;
+	while (end && end->type != 2)
+		end = end->next;
 	if (!ft_strequ(tmp->name, start->name))
 	{
 		while (!ft_strequ(tmp->next->name, start->name))
@@ -98,5 +103,17 @@ void	start_swap(t_room **rooms)
 		tmp->next = start->next;
 		start->next = *rooms;
 		*rooms = start;
+	}
+	tmp = *rooms;
+	pre_end = *rooms;
+	while (tmp && tmp->next)
+		tmp = tmp->next;
+	while (pre_end && pre_end->next->type != 2)
+		pre_end = pre_end->next;
+	if (!ft_strequ(tmp->name, end->name))
+	{
+		pre_end->next = end->next;
+		tmp->next = end;
+		end->next = NULL;
 	}
 }

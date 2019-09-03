@@ -6,7 +6,7 @@
 /*   By: bmarks <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 10:51:39 by bmarks            #+#    #+#             */
-/*   Updated: 2019/08/27 16:48:26 by bmarks           ###   ########.fr       */
+/*   Updated: 2019/09/03 11:31:13 by bmarks           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,12 @@
 /*
 **	x and y position of room for visualiser and checking overlapping rooms.
 */
+
+typedef struct		s_map
+{
+	char			*map[MAP_MAX];
+	char			*links[MAP_MAX];
+}					t_map;
 
 typedef struct		s_path
 {
@@ -90,14 +96,14 @@ typedef struct		s_ant
 /*
 ** Validation
 */
-void				validate(char *s, char **map, int mode, t_room **room);
-void				val_ants(char *s, char **map, t_room **room);
-t_room				*val_room(char *s, char **map, int type, t_room **room);
-void				val_link(char *s, char **map, t_room **room);
-int					populate_map(char **map, t_room **room);
+void				validate(char *s, t_map *mappy, int mode, t_room **room);
+void				val_ants(char *s, t_map *mappy, t_room **room);
+t_room				*val_room(char *s, t_map *mappy, int type, t_room **room);
+void				val_link(char *s, t_map *mappy, t_room **room);
+int					populate_map(t_map *mappy, t_room **room);
 void				link_check(char **link, t_room **room);
 int					contains_dup(t_path *start);
-void				set_ants(char **map, t_room **rooms);
+void				set_ants(t_map *mappy, t_room **rooms);
 
 /*
 ** Debug
@@ -130,7 +136,7 @@ void				path_bot(t_room *start, t_room *room, t_path *path,
 t_path				*dup_path(t_path *path);
 size_t				path_length(t_path *path);
 void				sort_paths(t_path **path, int size);
-void				start_swap(t_room **rooms);
+void				room_swap(t_room **rooms);
 void				create_tab(t_room *room, char ***tab);
 
 /*
