@@ -1,6 +1,11 @@
 #include <lem_in.h>
 
-void		create_tab(t_map *m)
+void		create_tab(t_room *room)
+{
+	
+}
+
+void		create_tab2(t_map *m)
 {
 	int		i;
 	int		r_1;
