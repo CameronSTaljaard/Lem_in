@@ -106,6 +106,7 @@ void				disp_rooms(t_room *rooms);
 void				disp_map(char **map);
 void				print_path(t_path *path);
 void				print_room_ids(t_room *room);
+void				print_tab(char **tab, int size);
 
 /*
 ** List handling
@@ -130,6 +131,7 @@ t_path				*dup_path(t_path *path);
 size_t				path_length(t_path *path);
 void				sort_paths(t_path **path, int size);
 void				start_swap(t_room **rooms);
+void				create_tab(t_room *room, char ***tab);
 
 /*
 ** Run, Antonio, run!

@@ -1,10 +1,22 @@
 #include <lem_in.h>
 
-void		create_tab(t_room *room)
+void		create_tab(t_room *room, char ***tab)
 {
-	
-}
+	int		i;
+	int		j;
 
+	*tab = (char **)malloc(sizeof(char **) * room->rcount);
+	i = 0;
+	while (i < room->rcount)
+	{
+		(*tab)[i] = (char *)malloc(sizeof(char) * room->rcount);
+		j = -1;
+		while (++j < room->rcount)
+			(*tab)[i][j] = '0';
+		i++;
+	}
+}
+/*
 void		create_tab2(t_map *m)
 {
 	int		i;
@@ -62,3 +74,4 @@ int			solution(t_map *m, int i)
 		return (1);
 	return (0);
 }
+*/

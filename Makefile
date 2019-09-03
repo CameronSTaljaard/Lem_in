@@ -26,6 +26,7 @@ SRCS		= $(SRC_DIR)main.c $(VAL_DIR)val_funcs.c $(VAL_DIR)validate.c $(DEBUG_DIR)
 SRCS		+= $(ROOMS_DIR)room_handler.c  $(ROOMS_DIR)room_nav.c $(ROOMS_DIR)link_handler.c
 SRCS		+= $(PATHS_DIR)path_bot.c $(PATHS_DIR)path_handler.c $(PATHS_DIR)path_functions.c
 SRCS		+= $(TRAVEL_DIR)path_filter.c $(TRAVEL_DIR)traversal.c $(PATHS_DIR)edge_table.c
+SRCS		+= $(DEBUG_DIR)edge_display.c
 OBJS		= $(SRCS:.c=.o)
 
 all:		$(NAME)

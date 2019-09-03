@@ -38,9 +38,9 @@ int			main(void)
 	start_swap(&rooms);
 	set_ants(map, &rooms);
 
-	print_room_ids(rooms);
-	create_tab(rooms, tab);
-
+	//print_room_ids(rooms);
+	create_tab(rooms, &tab);
+	print_tab(tab, rooms->rcount);
 	//path_bot(rooms, find_start(&rooms), path, paths);
 	//if (!paths[i])
 	//	NO_PATHS;
