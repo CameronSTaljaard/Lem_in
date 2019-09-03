@@ -5,13 +5,13 @@ void		create_tab(t_room *room, char ***tab)
 	int		i;
 	int		j;
 
-	*tab = (char **)malloc(sizeof(char **) * room->rcount);
+	*tab = (char **)malloc(sizeof(char **) * (room->rcount + 1));
 	i = 0;
-	while (i < room->rcount)
+	while (i < room->rcount + 1)
 	{
-		(*tab)[i] = (char *)malloc(sizeof(char) * room->rcount);
+		(*tab)[i] = (char *)malloc(sizeof(char) * (room->rcount + 1));
 		j = -1;
-		while (++j < room->rcount)
+		while (++j < room->rcount + 1)
 			(*tab)[i][j] = '0';
 		i++;
 	}

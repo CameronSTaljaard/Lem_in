@@ -40,7 +40,7 @@ int			main(void)
 
 	//print_room_ids(rooms);
 	create_tab(rooms, &tab);
-	print_tab(tab, rooms->rcount);
+	print_tab(tab, rooms->rcount + 1);
 	//path_bot(rooms, find_start(&rooms), path, paths);
 	//if (!paths[i])
 	//	NO_PATHS;
