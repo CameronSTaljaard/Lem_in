@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   misc.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bmarks <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/06 11:53:02 by bmarks            #+#    #+#             */
+/*   Updated: 2019/09/06 11:53:07 by bmarks           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <libft.h>
 #include <lem_in.h>
 
@@ -27,7 +39,6 @@ int		paths_intersect(t_path *path1, t_path *path2)
 
 	temp_path1 = path1->next_room;
 	temp_path2 = path2->next_room;
-
 	while (temp_path1->next_room && temp_path2->next_room)
 	{
 		if (ft_strequ(temp_path1->room_name, temp_path2->room_name))

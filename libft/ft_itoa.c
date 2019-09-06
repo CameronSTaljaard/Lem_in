@@ -6,7 +6,7 @@
 /*   By: ctaljaar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/22 17:15:23 by ctaljaar          #+#    #+#             */
-/*   Updated: 2019/05/22 17:15:24 by ctaljaar         ###   ########.fr       */
+/*   Updated: 2019/09/06 10:52:50 by bmarks           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*ft_itoa(int n)
 	length = ft_intlen(n);
 	result[length] = '\0';
 	if (n == 0)
-		return (ft_strdup("0"));
+		result[0] = '0';
 	if (n < 0)
 	{
 		result[0] = '-';

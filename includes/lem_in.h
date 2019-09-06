@@ -6,7 +6,7 @@
 /*   By: bmarks <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 10:51:39 by bmarks            #+#    #+#             */
-/*   Updated: 2019/09/04 09:54:29 by bmarks           ###   ########.fr       */
+/*   Updated: 2019/09/06 11:51:21 by bmarks           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@
 # define MAP_MAX 100000
 # define START 1
 # define END 2
+
+# define E2E {n[3]->next = n[2]->next; n[1]->next = n[2]; n[2]->next = NULL;}
 
 /*
 **	x and y position of room for visualiser and checking overlapping rooms.
@@ -105,13 +107,12 @@ void				set_ants(char **mappy, t_room **rooms);
 void				disp_rooms(t_room *rooms);
 void				disp_map(char **map);
 void				print_path(t_path *path);
-void				print_room_ids(t_room *room);
 void				print_tab(char **tab, int size);
 
 /*
 ** List handling
 */
-t_room				*new_room(char *name, int xpos, int ypos, int type, int room_count);
+t_room				*new_room(char **info, int type, int room_count);
 t_room				*add_room(t_room **room, char **info, int type);
 void				free_rooms(t_room **room);
 t_links				*new_link(char *name);

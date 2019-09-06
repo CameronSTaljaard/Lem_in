@@ -6,7 +6,7 @@
 /*   By: bmarks <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/26 11:01:33 by bmarks            #+#    #+#             */
-/*   Updated: 2019/08/27 16:30:51 by bmarks           ###   ########.fr       */
+/*   Updated: 2019/09/06 11:51:10 by bmarks           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,14 +94,5 @@ void		disp_ants(t_ant *ant, t_room **rooms)
 			ft_putstr(ant->curr_room);
 			ft_putchar(' ');
 		}
-	}
-}
-
-void	print_room_ids(t_room *rooms)
-{
-	while(rooms)
-	{
-		printf("Room %s id is : %d\n", rooms->name, rooms->id);
-		rooms = rooms->next;
 	}
 }

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   link_handler.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bmarks <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/06 11:01:45 by bmarks            #+#    #+#             */
+/*   Updated: 2019/09/06 11:01:56 by bmarks           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <lem_in.h>
 
 t_links	*new_link(char *name)
@@ -6,7 +18,7 @@ t_links	*new_link(char *name)
 
 	new = (t_links *)malloc(sizeof(t_links));
 	if (!new)
-		MAL_ERROR
+		MAL_ERROR;
 	new->link = ft_strdup(name);
 	new->next = NULL;
 	return (new);
@@ -28,9 +40,8 @@ void	add_link(t_room **room, char *name1, char *name2)
 			return ;
 		}
 		tmp_link = tmp->links;
-		while(tmp_link->next)
+		while (tmp_link->next)
 		{
-
 			ft_strequ(tmp_link->link, name2) ? (DUP_LINK) : NULL;
 			tmp_link = tmp_link->next;
 		}
