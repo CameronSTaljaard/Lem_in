@@ -36,14 +36,17 @@ int			main(void)
 	populate_map(mappy, &rooms);
 	room_swap(&rooms);
 	set_ants(mappy, &rooms);
-	path_bot(rooms, find_start(&rooms), path, paths);
-	if (!paths[i])
-		NO_PATHS;
-	disp_map(mappy);
-	sort_paths(paths, array_length(paths));
-	traversal(paths, &rooms);
-	while (paths[i])
-		free_paths(&paths[i++]);
-	free_rooms(&rooms);
+	//path_bot(rooms, rooms, path, paths);
+	//if (!paths[i])
+	//	NO_PATHS;
+	//disp_map(mappy);
+	//sort_paths(paths, array_length(paths));
+	//traversal(paths, &rooms);
+	//while (paths[i])
+	//	print_path(paths[i++]);
+	//	free_paths(&paths[i++]);
+	bfs(find_start(&rooms));
+	print_path(construct_path(rooms));
+	//free_rooms(&rooms);
 	return (0);
 }

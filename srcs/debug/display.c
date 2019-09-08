@@ -96,3 +96,14 @@ void		disp_ants(t_ant *ant, t_room **rooms)
 		}
 	}
 }
+
+void	print_queue(t_queue *queue)
+{
+	while(queue)
+	{
+		ft_putstr(queue->room->name);
+		(queue->next) ? ft_putstr("->"): NULL;
+		queue = queue->next;
+	}
+	ft_putendl("");
+}
