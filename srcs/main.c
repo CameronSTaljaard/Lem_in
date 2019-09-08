@@ -26,7 +26,6 @@ int			main(void)
 	t_room			*rooms;
 	t_path			*path;
 
-	path = NULL;
 	populate_map(mappy, &rooms);
 	room_swap(&rooms);
 	set_ants(mappy, &rooms);
@@ -36,7 +35,5 @@ int			main(void)
 	//traversal(path, &rooms);
 	free_rooms(&rooms);
 	free_paths(&path);
-	while (1)
-		usleep(5000);
 	return (0);
 }

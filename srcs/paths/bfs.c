@@ -86,7 +86,7 @@ void	bfs(t_room *start)
 		while (tmp_link)
 		{
 			if (tmp_link->room->dist == 0)
-				QUEUE_ADD;
+				QUEUE_ADD
 			tmp_link = tmp_link->next;
 		}
 		queue_remove(&queue);

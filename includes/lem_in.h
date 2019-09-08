@@ -39,8 +39,8 @@
 # define END 2
 # define E2E {n[3]->next = n[2]->next; n[1]->next = n[2]; n[2]->next = NULL;}
 
-# define Q_1 queue_add(queue, tmp_link->room);
-# define Q_2 tmp_link->room->dist = queue->room->dist + 1;
+# define Q_1 {queue_add(queue, tmp_link->room);
+# define Q_2 tmp_link->room->dist = queue->room->dist + 1;}
 # define QUEUE_ADD Q_1 Q_2
 
 typedef struct		s_path
