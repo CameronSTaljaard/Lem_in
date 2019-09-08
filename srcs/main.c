@@ -33,11 +33,10 @@ int			main(void)
 	bfs(find_start(&rooms));
 	path = construct_path(rooms);
 	disp_map(mappy);
-	print_path(path);
 	//traversal(path, &rooms);
 	free_rooms(&rooms);
 	free_paths(&path);
 	while (1)
-		usleep(500);
+		usleep(5000);
 	return (0);
 }

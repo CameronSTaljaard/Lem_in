@@ -1,44 +1,64 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   bfs.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ctaljaar <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/08 18:15:13 by ctaljaar          #+#    #+#             */
+/*   Updated: 2019/09/08 18:15:14 by ctaljaar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <lem_in.h>
 
-void reverse(t_path **head_ref) 
+int		check_paths(t_room *room)
 {
-	t_path *prev = NULL;
-	t_path *current = *head_ref;
+	while (room->type != END)
+		room = room->next;
+	if (room->dist == 0)
+		return (1);
+	return (0);
+}
+
+void	reverse(t_path **path)
+{
+	t_path *prev;
+	t_path *current;
 	t_path *next;
+
+	current = *path;
+	prev = NULL;
 	while (current != NULL)
 	{
-		next  = current->next_room;
+		next = current->next_room;
 		current->next_room = prev;
 		prev = current;
 		current = next;
-    }
-	*head_ref = prev;
+	}
+	*path = prev;
 }
 
 t_path	*construct_path(t_room *start)
 {
-	t_room	*curr;
 	t_room	*end;
 	t_links	*tmp_link;
 	t_path	*path;
-	int		dist;
 
 	end = start;
 	while (end->type != END)
 		end = end->next;
-	curr = end;
-	dist = end->dist;
 	path = NULL;
 	add_path(&path, end->name);
-	while(curr->dist != 1)
+	while (end->dist != 1)
 	{
-		tmp_link = curr->links;
+		tmp_link = end->links;
 		while (tmp_link)
 		{
-			if (tmp_link->room->dist == curr->dist - 1)
+			if (tmp_link->room->dist == end->dist - 1)
 			{
 				add_path(&path, tmp_link->room->name);
-				curr = tmp_link->room;
+				end = tmp_link->room;
 			}
 			tmp_link = tmp_link->next;
 		}
@@ -63,13 +83,10 @@ void	bfs(t_room *start)
 	while (queue && end->dist == 0)
 	{
 		tmp_link = queue->room->links;
-		while(tmp_link)
+		while (tmp_link)
 		{
 			if (tmp_link->room->dist == 0)
-			{
-				queue_add(queue, tmp_link->room);
-				tmp_link->room->dist = queue->room->dist + 1;
-			}
+				QUEUE_ADD;
 			tmp_link = tmp_link->next;
 		}
 		queue_remove(&queue);

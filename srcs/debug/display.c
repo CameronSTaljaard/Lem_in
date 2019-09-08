@@ -27,38 +27,6 @@ void		disp_map(char **map)
 	ft_putstr("\n");
 }
 
-void		disp_links(t_links *link)
-{
-	ft_putstr_col_fd(CYAN, link->link, 1);
-	ft_putchar(' ');
-	(link->next) ? (ft_putstr("and ")) : NULL;
-	if (link->next)
-		disp_links(link->next);
-}
-
-void		disp_rooms(t_room *rooms)
-{
-	while (rooms)
-	{
-		ft_putstr_col_fd(GREEN, "Room: ", 1);
-		ft_putendl_col_fd(GREEN, rooms->name, 1);
-		ft_putstr("Location: ");
-		ft_putnbr_col_fd(CYAN, rooms->pos.x, 1);
-		ft_putchar(' ');
-		ft_putnbr_col_fd(CYAN, rooms->pos.y, 1);
-		ft_putendl("");
-		ft_putstr("Number of Ants: ");
-		ft_putnbr_col_fd(CYAN, rooms->ant_count, 1);
-		ft_putendl("");
-		ft_putstr("Links:");
-		ft_putchar(' ');
-		disp_links(rooms->links);
-		ft_putendl("");
-		ft_putendl("");
-		rooms = rooms->next;
-	}
-}
-
 static void	insfn(t_ant *ant)
 {
 	ft_putchar('L');
@@ -95,15 +63,4 @@ void		disp_ants(t_ant *ant, t_room **rooms)
 			ft_putchar(' ');
 		}
 	}
-}
-
-void	print_queue(t_queue *queue)
-{
-	while(queue)
-	{
-		ft_putstr(queue->room->name);
-		(queue->next) ? ft_putstr("->"): NULL;
-		queue = queue->next;
-	}
-	ft_putendl("");
 }

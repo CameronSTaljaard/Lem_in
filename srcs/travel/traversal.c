@@ -71,3 +71,14 @@ void		traversal(t_path **paths, t_room **rooms)
 	path_filter(paths, filt, rooms);
 	colony(filt, rooms);
 }
+
+t_room		*find_room(t_room *room, char *name)
+{
+	while (room)
+	{
+		if (ft_strequ(room->name, name))
+			return (room);
+		room = room->next;
+	}
+	return (room);
+}

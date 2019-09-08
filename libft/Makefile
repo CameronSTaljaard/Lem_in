@@ -25,7 +25,7 @@ SRCS		+= ft_lstnew.c ft_lstdelone.c ft_lstadd.c ft_lstiter.c ft_lstmap.c ft_lstd
 # Extra
 SRCS		+= ft_iswhitespace.c ft_wordcount.c ft_sort_array.c ft_strswap.c ft_insert_node.c ft_free_list.c ft_isupper.c
 SRCS		+= ft_intlen.c ft_frequency.c ft_putendl_col_fd.c ft_putchar_col_fd.c ft_putstr_col_fd.c
-SRCS		+= ft_putnbr_col_fd.c ft_int_overflows.c ft_copy_array.c ft_isnum.c ft_freearray.c string_input.c
+SRCS		+= ft_putnbr_col_fd.c ft_int_overflows.c ft_copy_array.c ft_isnum.c ft_freearray.c
 # get_next_line
 SRCS		+= ft_copyuntil.c get_next_line.c
 

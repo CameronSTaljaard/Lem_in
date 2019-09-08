@@ -27,7 +27,6 @@
 # define BAD_ANTS {ft_putendl("Error: Ants must be an integer > 0."); exit(1);}
 # define BAD_X {ft_putendl("Error : Invalid value for x-coordinate."); exit(1);}
 # define BAD_Y {ft_putendl("Error : Invalid value for y-coordinate."); exit(1);}
-
 # define MAL_ERROR {ft_putendl("Error : Failed to malloc."); exit(1);}
 # define DUP_NAME {ft_putendl("Error: Duplicate room names."); exit(1);}
 # define POS_CLASH {ft_putendl("Error : Overlapping rooms."); exit(1);}
@@ -38,12 +37,11 @@
 # define MAP_MAX 100000
 # define START 1
 # define END 2
-
 # define E2E {n[3]->next = n[2]->next; n[1]->next = n[2]; n[2]->next = NULL;}
 
-/*
-**	x and y position of room for visualiser and checking overlapping rooms.
-*/
+# define Q_1 queue_add(queue, tmp_link->room);
+# define Q_2 tmp_link->room->dist = queue->room->dist + 1;
+# define QUEUE_ADD Q_1 Q_2
 
 typedef struct		s_path
 {
@@ -90,12 +88,11 @@ typedef struct		s_ant
 	t_path			*path;
 }					t_ant;
 
-typedef struct		s_queue 
+typedef struct		s_queue
 {
 	t_room			*room;
 	struct s_queue	*next;
 }					t_queue;
-
 
 /*
 ** Validation
@@ -108,15 +105,7 @@ int					populate_map(char **mappy, t_room **room);
 void				link_check(char **link, t_room **room);
 int					contains_dup(t_path *start);
 void				set_ants(char **mappy, t_room **rooms);
-
-/*
-** Debug
-*/
-void				disp_rooms(t_room *rooms);
 void				disp_map(char **map);
-void				print_path(t_path *path);
-void				print_tab(char **tab, int size);
-void				print_queue(t_queue *queue);
 
 /*
 ** List handling
@@ -138,8 +127,6 @@ void				queue_remove(t_queue **queue);
 ** Room Navigation
 */
 t_room				*find_room(t_room *room, char *name);
-size_t				path_length(t_path *path);
-void				sort_paths(t_path **path, int size);
 void				room_swap(t_room **rooms);
 void				bfs(t_room *start);
 t_path				*construct_path(t_room *start);
@@ -158,5 +145,6 @@ void				disp_ants(t_ant *ant, t_room **rooms);
 int					map_count(void);
 size_t				array_length(t_path **path);
 t_room				*find_start(t_room **rooms);
+int					check_paths(t_room *room);
 
 #endif

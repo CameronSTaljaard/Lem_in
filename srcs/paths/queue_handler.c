@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   queue_handler.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ctaljaar <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/08 18:15:20 by ctaljaar          #+#    #+#             */
+/*   Updated: 2019/09/08 18:15:21 by ctaljaar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <lem_in.h>
 
-t_queue	*queue_new(t_room *room)
+t_queue			*queue_new(t_room *room)
 {
 	t_queue	*ret;
 
@@ -36,5 +48,5 @@ void			queue_remove(t_queue **queue)
 		return ;
 	tmp = (*queue)->next;
 	free(*queue);
-	*queue = tmp;	
+	*queue = tmp;
 }
