@@ -138,9 +138,6 @@ void				queue_remove(t_queue **queue);
 ** Room Navigation
 */
 t_room				*find_room(t_room *room, char *name);
-void				path_bot(t_room *start, t_room *room, t_path *path,
-		t_path **paths);
-t_path				*dup_path(t_path *path);
 size_t				path_length(t_path *path);
 void				sort_paths(t_path **path, int size);
 void				room_swap(t_room **rooms);

@@ -1,5 +1,20 @@
 #include <lem_in.h>
 
+void reverse(t_path **head_ref) 
+{
+	t_path *prev = NULL;
+	t_path *current = *head_ref;
+	t_path *next;
+	while (current != NULL)
+	{
+		next  = current->next_room;
+		current->next_room = prev;
+		prev = current;
+		current = next;
+    }
+	*head_ref = prev;
+}
+
 t_path	*construct_path(t_room *start)
 {
 	t_room	*curr;
@@ -28,6 +43,7 @@ t_path	*construct_path(t_room *start)
 			tmp_link = tmp_link->next;
 		}
 	}
+	reverse(&path);
 	return (path);
 }
 
@@ -44,7 +60,6 @@ void	bfs(t_room *start)
 	room = start;
 	queue = queue_new(room);
 	room->dist = 1;
-	//print_queue(queue);
 	while (queue && end->dist == 0)
 	{
 		tmp_link = queue->room->links;
@@ -54,11 +69,11 @@ void	bfs(t_room *start)
 			{
 				queue_add(queue, tmp_link->room);
 				tmp_link->room->dist = queue->room->dist + 1;
-				//printf("%s:%d -> %s:%d\n" , queue->room->name, queue->room->dist, tmp_link->room->name, tmp_link->room->dist);
 			}
 			tmp_link = tmp_link->next;
 		}
 		queue_remove(&queue);
-		//print_queue(queue);
 	}
+	while (queue)
+		queue_remove(&queue);
 }

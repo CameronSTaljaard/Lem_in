@@ -39,21 +39,6 @@ t_path	*new_path(char *room_name)
 	return (new);
 }
 
-t_path	*dup_path(t_path *path)
-{
-	t_path *new;
-
-	if (!path)
-		return (NULL);
-	new = NULL;
-	while (path)
-	{
-		add_path(&new, path->room_name);
-		path = path->next_room;
-	}
-	return (new);
-}
-
 t_path	*add_path(t_path **path, char *room_name)
 {
 	t_path *tmp;
