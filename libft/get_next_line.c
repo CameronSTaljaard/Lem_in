@@ -3,77 +3,68 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ctaljaar <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: bmarks <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/11 12:07:08 by ctaljaar          #+#    #+#             */
-/*   Updated: 2019/06/11 12:07:10 by ctaljaar         ###   ########.fr       */
+/*   Created: 2019/06/18 11:12:22 by bmarks            #+#    #+#             */
+/*   Updated: 2019/06/20 15:52:04 by bmarks           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <get_next_line.h>
-#include <libft.h>
+#include "includes/libft.h"
 
-t_list	*get_file(int fd, t_list **file)
+static void	nl_del(char *s)
 {
-	t_list	*tmp;
+	int	i;
 
-	if (!file)
-		return (NULL);
-	tmp = *file;
-	while (tmp)
-	{
-		if ((int)tmp->content_size == fd)
-			return (tmp);
-		tmp = tmp->next;
-	}
-	tmp = ft_lstnew("", fd);
-	ft_lstadd(file, tmp);
-	return (tmp);
+	i = 0;
+	while (*(s + i) != '\n' && s + i)
+		i++;
+	if (*(s + i) == '\n')
+		*(s + i) = '\0';
 }
 
-int		read_line(const int fd, char **content)
+static int	get_data(char *s, char **s_out)
 {
-	int		ret;
 	char	*tmp;
-	char	buffer[BUFF_SIZE + 1];
+	char	*tmp2;
 
-	while ((ret = read(fd, buffer, BUFF_SIZE)))
+	if (ft_strrchr(s, '\n'))
 	{
-		buffer[ret] = '\0';
-		tmp = *content;
-		if (!(*content = ft_strjoin(*content, buffer)))
-			return (-1);
+		tmp = ft_strdup(s);
+		s = ft_strcpy(s, ft_strchr(s, '\n') + 1);
+		nl_del(tmp);
+		tmp2 = *s_out;
+		*s_out = ft_strjoin(*s_out, tmp);
 		free(tmp);
-		if (ft_strchr(buffer, '\n'))
-			break ;
-	}
-	return (ret);
-}
-
-int		get_next_line(const int fd, char **line)
-{
-	char			buffer[BUFF_SIZE + 1];
-	int				ret;
-	static t_list	*file;
-	t_list			*curr;
-	char			*tmp;
-
-	if (fd < 0 || !(line) || (read(fd, buffer, 0)) < 0 ||
-	(!(curr = get_file(fd, &file))))
-		return (-1);
-	tmp = curr->content;
-	ret = read_line(fd, &tmp);
-	curr->content = tmp;
-	if (ret == 0 && *tmp == '\0')
-		return (0);
-	ret = ft_copyuntil(line, curr->content, '\n');
-	tmp = curr->content;
-	if (tmp[ret] != '\0')
-	{
-		curr->content = ft_strdup(curr->content + ret + 1);
-		free(tmp);
+		free(tmp2);
+		return (1);
 	}
 	else
-		ft_strclr(tmp);
+	{
+		tmp = *s_out;
+		*s_out = ft_strjoin(*s_out, s);
+		free(tmp);
+		ft_bzero(s, BUFF_SIZE);
+		return (0);
+	}
+}
+
+int			get_next_line(const int fd, char **line)
+{
+	static char	*data[65535];
+
+	if (fd < 0 || !line || read(fd, line, 0) < 0)
+		return (-1);
+	if (!data[fd])
+		data[fd] = ft_strnew(BUFF_SIZE);
+	*line = ft_strnew(0);
+	if (*data[fd] && get_data(data[fd], line))
+		return (1);
+	ft_bzero(data[fd], BUFF_SIZE);
+	while (read(fd, data[fd], BUFF_SIZE) > 0)
+		if (get_data(data[fd], line))
+			return (1);
+	if (**line == 0)
+		return (0);
 	return (1);
 }
