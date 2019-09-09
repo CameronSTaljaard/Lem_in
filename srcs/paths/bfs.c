@@ -6,7 +6,7 @@
 /*   By: ctaljaar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/08 18:15:13 by ctaljaar          #+#    #+#             */
-/*   Updated: 2019/09/09 09:33:42 by bmarks           ###   ########.fr       */
+/*   Updated: 2019/09/09 09:52:07 by bmarks           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ void	bfs(t_room *start)
 		}
 		queue_remove(&queue);
 	}
+	end->dist ? NULL : (NO_PATHS);
 	while (queue)
 		queue_remove(&queue);
 }
