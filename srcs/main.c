@@ -6,7 +6,7 @@
 /*   By: bmarks <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 13:05:33 by bmarks            #+#    #+#             */
-/*   Updated: 2019/09/04 09:55:36 by bmarks           ###   ########.fr       */
+/*   Updated: 2019/09/09 09:26:07 by bmarks           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int			main(void)
 	bfs(find_start(&rooms));
 	path = construct_path(rooms);
 	disp_map(mappy);
-	//traversal(path, &rooms);
+	traversal(path, &rooms);
 	free_rooms(&rooms);
 	free_paths(&path);
 	return (0);

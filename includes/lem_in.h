@@ -6,7 +6,7 @@
 /*   By: bmarks <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 10:51:39 by bmarks            #+#    #+#             */
-/*   Updated: 2019/09/06 11:51:21 by bmarks           ###   ########.fr       */
+/*   Updated: 2019/09/09 09:30:55 by bmarks           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,8 +135,7 @@ t_path				*construct_path(t_room *start);
 ** Run, Antonio, run!
 */
 
-void				traversal(t_path **paths, t_room **rooms);
-void				path_filter(t_path **paths, t_path **filt, t_room **rooms);
+void				traversal(t_path *path, t_room **rooms);
 void				disp_ants(t_ant *ant, t_room **rooms);
 
 /*

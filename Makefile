@@ -25,7 +25,6 @@ EOC				:="\033[0;0m"
 SRCS		= $(SRC_DIR)main.c $(VAL_DIR)val_funcs.c $(VAL_DIR)validate.c $(DEBUG_DIR)display.c
 SRCS		+= $(ROOMS_DIR)room_handler.c $(ROOMS_DIR)link_handler.c $(TRAVEL_DIR)traversal.c 
 SRCS		+= $(PATHS_DIR)path_handler.c $(PATHS_DIR)bfs.c $(PATHS_DIR)queue_handler.c
-SRCS		+= $(TRAVEL_DIR)path_filter.c 
 OBJS		= $(SRCS:.c=.o)
 
 all:		$(NAME)

@@ -6,7 +6,7 @@
 /*   By: ctaljaar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/08 18:15:13 by ctaljaar          #+#    #+#             */
-/*   Updated: 2019/09/08 18:15:14 by ctaljaar         ###   ########.fr       */
+/*   Updated: 2019/09/09 09:33:42 by bmarks           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	bfs(t_room *start)
 		while (tmp_link)
 		{
 			if (tmp_link->room->dist == 0)
-				QUEUE_ADD
+				QUEUE_ADD;
 			tmp_link = tmp_link->next;
 		}
 		queue_remove(&queue);
