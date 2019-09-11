@@ -6,7 +6,7 @@
 /*   By: bmarks <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 13:40:52 by bmarks            #+#    #+#             */
-/*   Updated: 2019/09/04 10:09:17 by bmarks           ###   ########.fr       */
+/*   Updated: 2019/09/11 10:20:48 by bmarks           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ int				populate_map(char **mappy, t_room **room)
 		validate(file, mappy, 1, room);
 		(file) ? free(file) : NULL;
 	}
+	free(file);
 	validate(NULL, NULL, 42, room);
 	return (1);
 }
