@@ -31,6 +31,9 @@ SRCS		+= $(ROOMS_DIR)room_handler.c  $(ROOMS_DIR)room_nav.c $(ROOMS_DIR)link_han
 SRCS		+= $(PATHS_DIR)path_bot.c $(PATHS_DIR)path_handler.c $(PATHS_DIR)path_functions.c
 SRCS		+= $(TRAVEL_DIR)path_filter.c $(TRAVEL_DIR)traversal.c
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 901544a... Commiting BFS.
+=======
 >>>>>>> parent of 901544a... Commiting BFS.
 =======
 >>>>>>> parent of 901544a... Commiting BFS.

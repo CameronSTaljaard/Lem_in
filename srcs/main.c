@@ -31,6 +31,7 @@ int			main(void)
 	set_ants(mappy, &rooms);
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 	bfs(find_start(&rooms));
 	path = construct_path(rooms);
 	disp_map(mappy);
@@ -38,6 +39,8 @@ int			main(void)
 	free_rooms(&rooms);
 	free_paths(&path);
 =======
+=======
+>>>>>>> parent of 901544a... Commiting BFS.
 =======
 >>>>>>> parent of 901544a... Commiting BFS.
 	path_bot(rooms, find_start(&rooms), path, paths);
@@ -50,6 +53,9 @@ int			main(void)
 		free_paths(&paths[i++]);
 	free_rooms(&rooms);
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 901544a... Commiting BFS.
+=======
 >>>>>>> parent of 901544a... Commiting BFS.
 =======
 >>>>>>> parent of 901544a... Commiting BFS.
