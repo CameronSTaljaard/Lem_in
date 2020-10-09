@@ -12,7 +12,7 @@
 
 #include <lem_in.h>
 
-t_room	*new_room(char **info, int type)
+t_room	*new_room(char **info, int type, int room_count)
 {
 	t_room *new;
 
@@ -24,7 +24,9 @@ t_room	*new_room(char **info, int type)
 	new->type = type;
 	new->ant_count = 0;
 	new->x_path = 0;
-	new->dist = 0;
+	new->id = room_count + 1;
+	if (type == START)
+		new->id = 0;
 	new->links = NULL;
 	new->next = NULL;
 	return (new);
@@ -37,7 +39,7 @@ t_room	*add_room(t_room **room, char **info, int type)
 	tmp = *room;
 	if (!*room)
 	{
-		*room = new_room(info, type);
+		*room = new_room(info, type, 0);
 		return (*room);
 	}
 	while (tmp->next)
@@ -50,7 +52,7 @@ t_room	*add_room(t_room **room, char **info, int type)
 	ft_strequ(info[0], tmp->name) ? (DUP_NAME) : NULL;
 	if (tmp->pos.x == ft_atoi(info[1]))
 		tmp->pos.y == ft_atoi(info[2]) ? (POS_CLASH) : NULL;
-	tmp->next = new_room(info, type);
+	tmp->next = new_room(info, type, (*room)->rcount);
 	(*room)->rcount += 1;
 	return (*room);
 }

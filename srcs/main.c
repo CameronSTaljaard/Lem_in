@@ -29,11 +29,23 @@ int			main(void)
 	populate_map(mappy, &rooms);
 	room_swap(&rooms);
 	set_ants(mappy, &rooms);
+<<<<<<< HEAD
 	bfs(find_start(&rooms));
 	path = construct_path(rooms);
 	disp_map(mappy);
 	traversal(path, &rooms);
 	free_rooms(&rooms);
 	free_paths(&path);
+=======
+	path_bot(rooms, find_start(&rooms), path, paths);
+	if (!paths[i])
+		NO_PATHS;
+	disp_map(mappy);
+	sort_paths(paths, array_length(paths));
+	traversal(paths, &rooms);
+	while (paths[i])
+		free_paths(&paths[i++]);
+	free_rooms(&rooms);
+>>>>>>> parent of 901544a... Commiting BFS.
 	return (0);
 }

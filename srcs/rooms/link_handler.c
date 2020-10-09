@@ -12,7 +12,7 @@
 
 #include <lem_in.h>
 
-t_links	*new_link(t_room *room, char *name)
+t_links	*new_link(char *name)
 {
 	t_links *new;
 
@@ -20,7 +20,6 @@ t_links	*new_link(t_room *room, char *name)
 	if (!new)
 		MAL_ERROR;
 	new->link = ft_strdup(name);
-	new->room = find_room(room, new->link);
 	new->next = NULL;
 	return (new);
 }
@@ -37,7 +36,7 @@ void	add_link(t_room **room, char *name1, char *name2)
 	{
 		if (!(tmp->links))
 		{
-			tmp->links = new_link((*room), name2);
+			tmp->links = new_link(name2);
 			return ;
 		}
 		tmp_link = tmp->links;
@@ -48,7 +47,7 @@ void	add_link(t_room **room, char *name1, char *name2)
 		}
 		if (ft_strequ(tmp_link->link, name2))
 			DUP_LINK;
-		tmp_link->next = new_link((*room), name2);
+		tmp_link->next = new_link(name2);
 	}
 }
 

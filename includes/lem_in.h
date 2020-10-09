@@ -58,7 +58,6 @@ typedef struct		s_co_ord
 typedef struct		s_links
 {
 	char			*link;
-	struct s_room	*room;
 	struct s_links	*next;
 }					t_links;
 
@@ -70,7 +69,7 @@ typedef struct		s_room
 	int				type;
 	int				ant_count;
 	int				x_path;
-	int				dist;
+	int				id;
 	int				rcount;
 	struct s_room	*next;
 }					t_room;
@@ -88,12 +87,15 @@ typedef struct		s_ant
 	t_path			*path;
 }					t_ant;
 
+<<<<<<< HEAD
 typedef struct		s_queue
 {
 	t_room			*room;
 	struct s_queue	*next;
 }					t_queue;
 
+=======
+>>>>>>> parent of 901544a... Commiting BFS.
 /*
 ** Validation
 */
@@ -106,30 +108,30 @@ void				link_check(char **link, t_room **room);
 int					contains_dup(t_path *start);
 void				set_ants(char **mappy, t_room **rooms);
 void				disp_map(char **map);
+<<<<<<< HEAD
+=======
+void				print_path(t_path *path);
+void				print_tab(char **tab, int size);
+>>>>>>> parent of 901544a... Commiting BFS.
 
 /*
 ** List handling
 */
-t_room				*new_room(char **info, int type);
+t_room				*new_room(char **info, int type, int room_count);
 t_room				*add_room(t_room **room, char **info, int type);
 void				free_rooms(t_room **room);
-t_links				*new_link(t_room *room, char *name);
+t_links				*new_link(char *name);
 void				add_link(t_room **room, char *name1, char *name2);
 void				free_links(t_links **link);
 t_path				*new_path(char *room_name);
 t_path				*add_path(t_path **path, char *room_name);
 void				free_paths(t_path **path);
-t_queue				*queue_new(t_room *room);
-void				queue_add(t_queue *queue, t_room *room);
-void				queue_remove(t_queue **queue);
 
 /*
 ** Room Navigation
 */
 t_room				*find_room(t_room *room, char *name);
 void				room_swap(t_room **rooms);
-void				bfs(t_room *start);
-t_path				*construct_path(t_room *start);
 
 /*
 ** Run, Antonio, run!
