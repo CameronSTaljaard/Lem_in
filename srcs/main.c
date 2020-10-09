@@ -30,6 +30,7 @@ int			main(void)
 	room_swap(&rooms);
 	set_ants(mappy, &rooms);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	bfs(find_start(&rooms));
 	path = construct_path(rooms);
 	disp_map(mappy);
@@ -37,6 +38,8 @@ int			main(void)
 	free_rooms(&rooms);
 	free_paths(&path);
 =======
+=======
+>>>>>>> parent of 901544a... Commiting BFS.
 	path_bot(rooms, find_start(&rooms), path, paths);
 	if (!paths[i])
 		NO_PATHS;
@@ -46,6 +49,9 @@ int			main(void)
 	while (paths[i])
 		free_paths(&paths[i++]);
 	free_rooms(&rooms);
+<<<<<<< HEAD
+>>>>>>> parent of 901544a... Commiting BFS.
+=======
 >>>>>>> parent of 901544a... Commiting BFS.
 	return (0);
 }

@@ -88,12 +88,15 @@ typedef struct		s_ant
 }					t_ant;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 typedef struct		s_queue
 {
 	t_room			*room;
 	struct s_queue	*next;
 }					t_queue;
 
+=======
+>>>>>>> parent of 901544a... Commiting BFS.
 =======
 >>>>>>> parent of 901544a... Commiting BFS.
 /*
@@ -112,6 +115,9 @@ void				disp_map(char **map);
 =======
 void				print_path(t_path *path);
 void				print_tab(char **tab, int size);
+<<<<<<< HEAD
+>>>>>>> parent of 901544a... Commiting BFS.
+=======
 >>>>>>> parent of 901544a... Commiting BFS.
 
 /*

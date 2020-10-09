@@ -30,6 +30,9 @@ SRCS		+= $(PATHS_DIR)path_handler.c $(PATHS_DIR)bfs.c $(PATHS_DIR)queue_handler.
 SRCS		+= $(ROOMS_DIR)room_handler.c  $(ROOMS_DIR)room_nav.c $(ROOMS_DIR)link_handler.c
 SRCS		+= $(PATHS_DIR)path_bot.c $(PATHS_DIR)path_handler.c $(PATHS_DIR)path_functions.c
 SRCS		+= $(TRAVEL_DIR)path_filter.c $(TRAVEL_DIR)traversal.c
+<<<<<<< HEAD
+>>>>>>> parent of 901544a... Commiting BFS.
+=======
 >>>>>>> parent of 901544a... Commiting BFS.
 OBJS		= $(SRCS:.c=.o)
 
